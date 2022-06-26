@@ -46,6 +46,7 @@ body{
     margin-right: 16px;
     border: none;
     border-radius: 50%;
+    cursor: pointer;
 }
 .menu__button--burger{
     background-image: url("img/menu/burger.svg");
@@ -76,6 +77,7 @@ body{
 	letter-spacing: -0.2px;
 	font-weight: 500;
 	color: #1B1C21;
+    cursor: pointer;
 }
 .title .menu {
     display: none;
@@ -195,6 +197,7 @@ body{
     letter-spacing: 0.2px;
     color: #1B1C21;
     padding-left: 32px;
+    cursor: pointer;
 }
 .expand__button::before{
     content: "";
