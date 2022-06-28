@@ -3,71 +3,68 @@
     <head>
         <title>cps</title>
         <meta charset="utf-8">
-        <meta name="keywords" content="">
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="fonts/ttlakes.css">
     </head>
     <body>
-        <header class="header">
-            <div class="menu">
-                <div class="menu__group">
-                    <button class="menu__button menu__button--burger" onclick="clickfn()"></button>
-                    <div class="menu__divider menu__divider--n1"></div>
-                    <a href="#" class="menu__logo">
-                        <img src="img/menu/group.svg" alt="логотип компании">
-                    </a>
-                </div>
-                <div class="menu__group">
-                    <button class="menu__button menu__button--call" onclick="clickfn()"></button>
-                    <button class="menu__button menu__button--chat" onclick="clickfn()"></button>
-                    <button class="menu__button menu__button--profile" onclick="clickfn()"></button>
-                    <div class="menu__divider menu__divider--n2"></div>
-                    <button class="menu__button menu__button--repair" onclick="clickfn()"></button>
-                    <button class="menu__button menu__button--status" onclick="clickfn()"></button>
-                </div>
-            </div>
-        </header>
-        <main class="main">
-            <div class="title">
-                <h1 class="title__text">Услуги и сервисы</h1>
+        <div class="wrapper">
+            <header class="header">
                 <div class="menu">
-                    <label class="menu__text" for="repair">Оставить заявку</label>
-                    <button class="menu__button menu__button--repair" onclick="clickfn()" id="repair"></button>
-                    <label class="menu__text" for="status">Статус ремонта</label>
-                    <button class="menu__button menu__button--status" onclick="clickfn()" id="status"></button>
-                </div>
-            </div>
-            <nav class="navigation">
-                <ul class="navigation__list">
-                    <li class="navigation__item"><a href="#" class="navigation__link">Ремонтируемые устройства</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">Ремонтируемые бренды</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">Цены на услуги</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">Адреса сервисных центров</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">Специальные цены</a></li>
-                    <li class="navigation__item"><a href="#" class="navigation__link">Отзывы</a></li>
-                </ul>
-            </nav>
-            <section class="about-company">
-                <div class="about-company__column">
-                    <p class="about-company__text">Мы являемся авторизованным сервисным центром по ремонту техники Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с официальной гарантией производителя.<br><br> Мы успешно работаем с 1992 года и заслужили репутацию надежного партнера, что подтверждает большое количество постоянных клиентов. Мы гордимся тем, что к нам обращаются по рекомендациям и, в свою очередь, советуют нас родным и близким.</p>
-                    <div class="expand">
-                        <button class="expand__button" onclick="clickfn()">Читать далее</button>
+                    <div class="menu__group">
+                        <button class="menu__button menu__button--burger" onclick="clickfn()"></button>
+                        <a href="#" class="menu__logo">
+                            <img src="img/menu/group.svg" alt="логотип компании">
+                        </a>
+                    </div>
+                    <div class="menu__group">
+                        <button class="menu__button menu__button--call" onclick="clickfn()"></button>
+                        <button class="menu__button menu__button--chat" onclick="clickfn()"></button>
+                        <button class="menu__button menu__button--profile" onclick="clickfn()"></button>
+                        <button class="menu__button menu__button--repair" onclick="clickfn()"></button>
+                        <button class="menu__button menu__button--status" onclick="clickfn()"></button>
                     </div>
                 </div>
-                <div class="about-company__column">
-                    <div class="about-company__img">
-                        <img src="img/about-company/company.png" alt="информация о компании">
+            </header>
+            <main class="main">
+                <div class="title">
+                    <h1 class="title__text">Услуги и сервисы</h1>
+                    <div class="menu">
+                        <label class="menu__text" for="repair">Оставить заявку</label>
+                        <button class="menu__button menu__button--repair" onclick="clickfn()" id="repair"></button>
+                        <label class="menu__text" for="status">Статус ремонта</label>
+                        <button class="menu__button menu__button--status" onclick="clickfn()" id="status"></button>
                     </div>
                 </div>
-            </section>
-        </main>
-        <footer></footer>
-        <script>
-            function clickfn () {
-                alert("Хмм");
-            }
-        </script>
+                <nav class="navigation">
+                    <ul class="navigation__list">
+                        <li class="navigation__item"><a href="#" class="navigation__link">Ремонтируемые устройства</a></li>
+                        <li class="navigation__item"><a href="#" class="navigation__link">Ремонтируемые бренды</a></li>
+                        <li class="navigation__item"><a href="#" class="navigation__link">Цены на услуги</a></li>
+                        <li class="navigation__item"><a href="#" class="navigation__link">Адреса сервисных центров</a></li>
+                        <li class="navigation__item"><a href="#" class="navigation__link">Специальные цены</a></li>
+                        <li class="navigation__item"><a href="#" class="navigation__link">Отзывы</a></li>
+                    </ul>
+                </nav>
+                <section class="about-company">
+                    <div class="about-company__column">
+                        <p class="about-company__text">Мы являемся авторизованным сервисным центром по ремонту техники Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с официальной гарантией производителя.<br><br> Мы успешно работаем с 1992 года и заслужили репутацию надежного партнера, что подтверждает большое количество постоянных клиентов. Мы гордимся тем, что к нам обращаются по рекомендациям и, в свою очередь, советуют нас родным и близким.</p>
+                        <div class="expand">
+                            <button class="expand__button" onclick="clickfn()">Читать далее</button>
+                        </div>
+                    </div>
+                    <div class="about-company__column">
+                        <div class="about-company__img">
+                            <img src="img/about-company/company.png" alt="информация о компании">
+                        </div>
+                    </div>
+                </section>
+            </main>
+            <script>
+                function clickfn () {
+                    alert("Хмм");
+                }
+            </script>
+        </div>
     </body>
 </html>
