@@ -2,17 +2,14 @@ html{
     box-sizing: border-box;
 }
 
-*, *:before, *:after{
-    box-sizing: inherit;
-}
-
 body{
     margin: 0;
     background-color: #F2F2F2;
 }
 
 .wrapper{
-    width: 100%;
+    min-width: 320px;
+    max-width: 100%;
     height: 100vh;
     margin: 0 auto;
     background-color: #F8F8F8;
@@ -29,51 +26,43 @@ body{
     justify-content: space-between;
     margin-left: 16px;
 }
+
 .menu__group{
     display: flex;
     align-items: center;
     height: 88px;
 }
-.menu__button{
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    margin-right: 16px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
+
+.menu__link{
+    display: flex;
+    margin: 0 16px 0 0;
+    font-size: 0;
+    text-decoration: none;
 }
-.menu__button--burger{
-    background-image: url("img/menu/burger.svg");
+.menu__link:hover{
+    transform: scale(1.05);
 }
-.menu__button--call{
+.menu__link--burger{}
+.menu__link--logo{}
+.menu__link--call{
     display: none;
-    background-image: url("img/menu/call.svg");
 }
-.menu__button--chat{
+.menu__link--chat{
     display: none;
-    background-image: url("img/menu/chat.svg");
 }
-.menu__button--profile{
+.menu__link--profile{
     display: none;
-    background-image: url("img/menu/profile.svg");
 }
-.menu__button--repair{
-    background-image: url("img/menu/repair.svg");
-}
-.menu__button--repair::after{
+.menu__link--repair::before{
     content: "";
-    z-index: 1;
+    display: inline-block;
+    margin: 4px 20px 4px 0;
     width: 2px;
     height: 32px;
-    margin-right: 36px;
     border-radius: 1px;
     background-color: #EAEAEA;
 }
-.menu__button--status{
-    background-image: url("img/menu/checkstatus.svg");
-}
-.menu__logo{}
+.menu__link--status{}
 .menu__text{
     font-family: "TTLakes-Medium";
     margin-right: 8px;
@@ -82,17 +71,16 @@ body{
 	letter-spacing: -0.2px;
 	font-weight: 500;
 	color: #1B1C21;
-    cursor: pointer;
-}
-.title .menu {
-    display: none;
 }
 
 .main{
+    padding-top: 24px;
 }
 
 .title{
-    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .title__text{
     font-family: "TTLakes-Bold";
@@ -106,9 +94,12 @@ body{
     border: 4px solid #F8F8F8;
     border-left: 4px solid #41F6D7;
 }
+.title .menu{
+    display: none;
+}
 
 .navigation{
-    padding-top: 24px;
+    margin-top: 24px;
     position: relative;
 }
 .navigation::before{
@@ -145,7 +136,6 @@ body{
 }
 .navigation__link{
     display: inline-block;
-    height: 40px;
     padding: 8px 16px;
     font-family: "TTLakes-Medium";
     text-decoration: none;
@@ -158,9 +148,13 @@ body{
     letter-spacing: -0.2px;
     color: #7E7E82;
 }
+
 .navigation__link:focus{
     background-color: #fff;
     border-color: #B8FFEC;
+}
+.navigation__link:hover{
+    transform: scale(1.05);
 }
 
 .about-company{
@@ -182,19 +176,16 @@ body{
     max-height: 90px;
     overflow: hidden;
 }
-.about-company__img img{
+.about-company__img{
     width: 100%;
 }
 
-.expand{
-    padding: 16px 16px;
-}
-.expand__button{
+.expand-button{
     font-family: "TTLakes-Medium";
     position: relative;
     height: 24px;
     width: 24px;
-    padding: 0;
+    margin: 16px 16px;
     border: none;
     background-color: #F8F8F8;
     white-space: nowrap;
@@ -203,10 +194,14 @@ body{
     font-weight: 500;
     letter-spacing: 0.2px;
     color: #1B1C21;
+    padding: 0;
     padding-left: 32px;
     cursor: pointer;
 }
-.expand__button::before{
+.expand-button:hover{
+    transform: scale(1.05);
+}
+.expand-button::before{
     content: "";
     position: absolute;
     top: 0;
@@ -216,24 +211,34 @@ body{
     background-image: url("img/expand/expand.svg");
 }
 
-@media (min-width: 768px) {
-    .menu__button--call{
-        display: block;
-    }
-    .menu__button--chat{
-        display: block;
-    }
-    .menu__button--profile{
-        display: block;
-    }
+@media (min-width:768px) {
     .menu{
-        margin: 0 8px 0 24px;
+        margin-left: 24px;
+        margin-right: 8px;
+    }
+    .menu__link--burger::after{
+        content: "";
+        display: inline-block;
+        margin: 4px 0 4px 20px;
+        width: 2px;
+        height: 32px;
+        border-radius: 1px;
+        background-color: #EAEAEA;
+    }
+    .menu__link--call{
+        display: inline-block;
+    }
+    .menu__link--chat{
+        display: inline-block;
+    }
+    .menu__link--profile{
+        display: inline-block;
     }
     .title__text{
         padding-left: 20px;
     }
     .navigation{
-        padding-top: 32px;
+        margin-top: 32px;
     }
     .navigation__list{
         padding-left: 24px;
@@ -249,28 +254,42 @@ body{
         max-height: 160px;
         line-height: 20px;
     }
-    .about-company__img img{
+    .about-company__img{
         border-radius: 6px;
     }
-    .expand{
-        padding: 16px 0;
+    .expand-button{
+        margin: 16px 0;
     }
 }
-@media (min-width: 1120px) {
+
+@media (min-width:1120px) {
     .wrapper{
         width: 1120px;
     }
     .header{
         display: none;
     }
-    .title{
+    .main{
         padding-top: 42px;
+    }
+    .menu__link{
+        margin: 0 32px 0 0;
+    }
+    .menu__link--repair::before{
+        display: none;
     }
     .title__text{
         padding-left: 28px;
     }
+    .title .menu{
+        display: flex;
+        align-items: center;
+    }
     .navigation{
-        padding-top: 8px;
+        margin-top: 8px;
+    }
+    .navigation::after{
+        display: none;
     }
     .navigation::before{
         display: none;
@@ -280,22 +299,10 @@ body{
         padding-left: 32px;
     }
     .about-company{
-        flex-direction: row;
         margin: 0 32px;
         margin-top: 8px;
     }
     .about-company__text{
         margin-right: 36px;
-    }
-    .title{
-        display: flex;
-        justify-content: space-between;
-    }
-    .title .menu {
-        display: flex;
-        margin: 0;
-    }
-    .menu__button{
-        margin-right: 32px;
     }
 }

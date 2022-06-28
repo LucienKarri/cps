@@ -12,17 +12,29 @@
             <header class="header">
                 <div class="menu">
                     <div class="menu__group">
-                        <button class="menu__button menu__button--burger" onclick="clickfn()"></button>
-                        <a href="#" class="menu__logo">
-                            <img src="img/menu/group.svg" alt="логотип компании">
+                        <a href="#" class="menu__link menu__link--burger">
+                            <img src="img/menu/burger.svg" alt="">
+                        </a>
+                        <a href="#" class="menu__link menu__link--logo">
+                            <img src="img/menu/group.svg" alt="">
                         </a>
                     </div>
                     <div class="menu__group">
-                        <button class="menu__button menu__button--call" onclick="clickfn()"></button>
-                        <button class="menu__button menu__button--chat" onclick="clickfn()"></button>
-                        <button class="menu__button menu__button--profile" onclick="clickfn()"></button>
-                        <button class="menu__button menu__button--repair" onclick="clickfn()"></button>
-                        <button class="menu__button menu__button--status" onclick="clickfn()"></button>
+                        <a href="#" class="menu__link menu__link--call">
+                            <img src="img/menu/call.svg" alt="">
+                        </a>
+                        <a href="#" class="menu__link menu__link--chat">
+                            <img src="img/menu/chat.svg" alt="">
+                        </a>
+                        <a href="#" class="menu__link menu__link--profile">
+                            <img src="img/menu/profile.svg" alt="">
+                        </a>
+                        <a href="#" class="menu__link menu__link--repair">
+                            <img src="img/menu/repair.svg" alt="">
+                        </a>
+                        <a href="#" class="menu__link menu__link--status">
+                            <img src="img/menu/checkstatus.svg" alt="">
+                        </a>
                     </div>
                 </div>
             </header>
@@ -30,10 +42,14 @@
                 <div class="title">
                     <h1 class="title__text">Услуги и сервисы</h1>
                     <div class="menu">
-                        <label class="menu__text" for="repair">Оставить заявку</label>
-                        <button class="menu__button menu__button--repair" onclick="clickfn()" id="repair"></button>
-                        <label class="menu__text" for="status">Статус ремонта</label>
-                        <button class="menu__button menu__button--status" onclick="clickfn()" id="status"></button>
+                        <a href="#" class="menu__link menu__link--repair">
+                            <span class="menu__text">Оставить заявку</span>
+                            <img src="img/menu/repair.svg" alt="">
+                        </a>
+                        <a href="#" class="menu__link menu__link--status">
+                            <span class="menu__text">Статус ремонта</span>
+                            <img src="img/menu/checkstatus.svg" alt="">
+                        </a>
                     </div>
                 </div>
                 <nav class="navigation">
@@ -49,22 +65,13 @@
                 <section class="about-company">
                     <div class="about-company__column">
                         <p class="about-company__text">Мы являемся авторизованным сервисным центром по ремонту техники Dell. Только у нас вы можете отремонтировать свой ноутбук Dell с официальной гарантией производителя.<br><br> Мы успешно работаем с 1992 года и заслужили репутацию надежного партнера, что подтверждает большое количество постоянных клиентов. Мы гордимся тем, что к нам обращаются по рекомендациям и, в свою очередь, советуют нас родным и близким.</p>
-                        <div class="expand">
-                            <button class="expand__button" onclick="clickfn()">Читать далее</button>
-                        </div>
+                        <button class="expand-button" onclick="clickfn()">Читать далее</button>
                     </div>
                     <div class="about-company__column">
-                        <div class="about-company__img">
-                            <img src="img/about-company/company.png" alt="информация о компании">
-                        </div>
+                        <img src="img/about-company/company.png" alt="информация о компании" class="about-company__img">
                     </div>
                 </section>
             </main>
-            <script>
-                function clickfn () {
-                    alert("Хмм");
-                }
-            </script>
         </div>
     </body>
 </html>
