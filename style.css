@@ -38,7 +38,6 @@ body{
     display: flex;
     font-size: 0;
     text-decoration: none;
-    gap: 8px;
 }
 .menu__link:hover{
     transform: scale(1.05);
@@ -270,6 +269,9 @@ body{
     .menu{
         margin: 0 32px;
         gap: 32px
+    }
+    .menu__link{
+        gap: 8px;
     }
     .menu__link--repair::before{
         display: none;
