@@ -24,20 +24,21 @@ body{
 .menu{
     display: flex;
     justify-content: space-between;
-    margin-left: 16px;
+    margin: 0 16px;
 }
 
 .menu__group{
     display: flex;
     align-items: center;
     height: 88px;
+    gap: 16px;
 }
 
 .menu__link{
     display: flex;
-    margin: 0 16px 0 0;
     font-size: 0;
     text-decoration: none;
+    gap: 8px;
 }
 .menu__link:hover{
     transform: scale(1.05);
@@ -65,7 +66,6 @@ body{
 .menu__link--status{}
 .menu__text{
     font-family: "TTLakes-Medium";
-    margin-right: 8px;
 	font-size: 16px;
 	line-height: 40px;
 	letter-spacing: -0.2px;
@@ -149,26 +149,22 @@ body{
     color: #7E7E82;
 }
 
-.navigation__link:focus{
+.navigation__link:hover{
     background-color: #fff;
     border-color: #B8FFEC;
-}
-.navigation__link:hover{
-    transform: scale(1.05);
 }
 
 .about-company{
     display: flex;
     flex-direction: column;
     margin-top: 24px;
+    gap: 16px;
 }
 .about-company__column{
-    flex: 0 1 100%;
 }
 .about-company__text{
     font-family: "TTLakes-Regular";
-    margin: 0;
-    padding: 0 16px;
+    margin: 0 16px;
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0.2px;
@@ -176,16 +172,15 @@ body{
     max-height: 90px;
     overflow: hidden;
 }
-.about-company__img{
+.about-company img{
     width: 100%;
+    flex: 1 0 50%;
 }
 
 .expand-button{
     font-family: "TTLakes-Medium";
     position: relative;
-    height: 24px;
-    width: 24px;
-    margin: 16px 16px;
+    margin: 16px 0 0 16px;
     border: none;
     background-color: #F8F8F8;
     white-space: nowrap;
@@ -197,6 +192,7 @@ body{
     padding: 0;
     padding-left: 32px;
     cursor: pointer;
+    vertical-align: middle;
 }
 .expand-button:hover{
     transform: scale(1.05);
@@ -213,8 +209,7 @@ body{
 
 @media (min-width:768px) {
     .menu{
-        margin-left: 24px;
-        margin-right: 8px;
+        margin: 0 24px;
     }
     .menu__link--burger::after{
         content: "";
@@ -246,11 +241,11 @@ body{
     .about-company{
         flex-direction: row;
         margin: 0 24px;
+        gap: 48px;
         margin-top: 32px;
     }
     .about-company__text{
-        padding: 0;
-        margin-right: 48px;
+        margin: 0;
         max-height: 160px;
         line-height: 20px;
     }
@@ -272,8 +267,9 @@ body{
     .main{
         padding-top: 42px;
     }
-    .menu__link{
-        margin: 0 32px 0 0;
+    .menu{
+        margin: 0 32px;
+        gap: 32px
     }
     .menu__link--repair::before{
         display: none;
@@ -301,8 +297,6 @@ body{
     .about-company{
         margin: 0 32px;
         margin-top: 8px;
-    }
-    .about-company__text{
-        margin-right: 36px;
+        gap: 36px;
     }
 }
