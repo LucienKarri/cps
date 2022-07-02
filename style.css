@@ -15,7 +15,7 @@ body{
     background-color: #F8F8F8;
 }
 
-.header{
+header{
     height: 88px;
     background-color: #fff;
     border-bottom: 1px solid #D9FFF5;
@@ -39,18 +39,8 @@ body{
     font-size: 0;
     text-decoration: none;
 }
-.menu__link:hover{
-    transform: scale(1.05);
-}
 .menu__link--burger{}
-.menu__link--logo{}
-.menu__link--call{
-    display: none;
-}
-.menu__link--chat{
-    display: none;
-}
-.menu__link--profile{
+.menu__link--disabled{
     display: none;
 }
 .menu__link--repair::before{
@@ -62,7 +52,6 @@ body{
     border-radius: 1px;
     background-color: #EAEAEA;
 }
-.menu__link--status{}
 .menu__text{
     font-family: "TTLakes-Medium";
 	font-size: 16px;
@@ -193,9 +182,6 @@ body{
     cursor: pointer;
     vertical-align: middle;
 }
-.expand-button:hover{
-    transform: scale(1.05);
-}
 .expand-button::before{
     content: "";
     position: absolute;
@@ -219,13 +205,7 @@ body{
         border-radius: 1px;
         background-color: #EAEAEA;
     }
-    .menu__link--call{
-        display: inline-block;
-    }
-    .menu__link--chat{
-        display: inline-block;
-    }
-    .menu__link--profile{
+    .menu__link--disabled{
         display: inline-block;
     }
     .title__text{
@@ -248,7 +228,7 @@ body{
         max-height: 160px;
         line-height: 20px;
     }
-    .about-company__img{
+    .about-company img{
         border-radius: 6px;
     }
     .expand-button{
@@ -260,7 +240,7 @@ body{
     .wrapper{
         width: 1120px;
     }
-    .header{
+    header{
         display: none;
     }
     .main{
