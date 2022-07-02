@@ -52,6 +52,19 @@ header{
     border-radius: 1px;
     background-color: #EAEAEA;
 }
+.menu__icon{
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FF3E79;
+}
+.menu__icon img{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .menu__text{
     font-family: "TTLakes-Medium";
 	font-size: 16px;
