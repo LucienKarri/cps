@@ -1,5 +1,6 @@
 html{
     box-sizing: border-box;
+    font-family: "TTLakes-Medium";
 }
 
 body{
@@ -39,7 +40,6 @@ header{
     font-size: 0;
     text-decoration: none;
 }
-.menu__link--burger{}
 .menu__link--disabled{
     display: none;
 }
@@ -161,8 +161,6 @@ header{
     margin-top: 24px;
     gap: 16px;
 }
-.about-company__column{
-}
 .about-company__text{
     font-family: "TTLakes-Regular";
     margin: 0 16px;
@@ -204,8 +202,17 @@ header{
     width: 24px;
     background-image: url("img/expand/expand.svg");
 }
+.expand-button--disabled{
+    display:none;
+}
+.expand-button--open::before{
+    transform: rotate(180deg);
+}
 
 @media (min-width:768px) {
+    .wrapper{
+        width: 768px;
+    }
     .menu{
         margin: 0 24px;
     }
