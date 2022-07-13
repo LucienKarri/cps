@@ -20,7 +20,9 @@ function mobileSlider() {
         sliderContainer.dataset.mobile = 'false';
         if (sliderContainer.classList.contains('swiper-initialized')) {
             mySwiper.destroy();
-            sliderWrapper.style.transition = "none";
+            if (expandButton.classList.contains('expand-button--open')) {
+                sliderWrapper.style.transition = "none";
+            }
         }
     }
 }
