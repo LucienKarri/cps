@@ -1,6 +1,7 @@
-let sliderContainer = document.querySelector('.swiper-container');
-let expandButton = document.querySelector('.expand-button');
-let cardsList = document.querySelectorAll('.swiper-slide');
+const sliderContainer = document.querySelector('.swiper-container');
+const expandButton = document.querySelector('.expand-button');
+const cardsList = document.querySelectorAll('.swiper-slide');
+const sliderWrapper = sliderContainer.querySelector('.swiper-wrapper');
 let mySwiper;
 
 function mobileSlider() {
@@ -19,10 +20,10 @@ function mobileSlider() {
         sliderContainer.dataset.mobile = 'false';
         if (sliderContainer.classList.contains('swiper-initialized')) {
             mySwiper.destroy();
+            sliderWrapper.style.transition = "none";
         }
     }
 }
-
 function showSlides() {
     let i = cardsList.length;
     while (i != 0) {
@@ -30,10 +31,12 @@ function showSlides() {
     }
 }
 
-function hideSlides() {
-    if (!expandButton.classList.contains('expand-button--open')) {
-        let i = cardsList.length;
+function slidesCondition() {
+    let i = cardsList.length;
+    if (window.innerWidth < 768 || expandButton.classList.contains('expand-button--open')) {
         showSlides();
+    }
+    if (!expandButton.classList.contains('expand-button--open')) {
         if (window.innerWidth >= 768 && window.innerWidth < 1120) {
             while (i != 6) {
                 cardsList[--i].classList.add('swiper-slide--disabled');
@@ -43,36 +46,47 @@ function hideSlides() {
             while (i != 8) {
                 cardsList[--i].classList.add('swiper-slide--disabled');
             }
+            while (i != 6) {
+                cardsList[--i].classList.remove('swiper-slide--disabled');
+            }
         }
     }
 }
 
 function showButton() {
-    if (window.innerWidth < 768) {
-        expandButton.classList.add('expand-button--disabled');
+    expandButton.classList.toggle('expand-button--disabled', window.innerWidth < 768);
+}
+function heightControl() {
+    if (expandButton.classList.contains('expand-button--open')) {
+        sliderWrapper.style.maxHeight = sliderWrapper.scrollHeight + 'px';
     } else {
-        expandButton.classList.remove('expand-button--disabled');
+        sliderWrapper.style.maxHeight = 164 + 'px';
     }
 }
 
 expandButton.addEventListener('click', function () {
     if (!expandButton.classList.contains('expand-button--open')) {
         showSlides();
-        expandButton.classList.add('expand-button--open');
+        expandButton.classList.toggle('expand-button--open');
+        heightControl();
         expandButton.textContent = 'Скрыть';
+        setTimeout(function() {sliderWrapper.style.transition = "none";}, 1000);
     } else {
-        expandButton.classList.remove('expand-button--open');
+        sliderWrapper.style.transition = "max-height 1s";
+        expandButton.classList.toggle('expand-button--open');
+        heightControl();
         expandButton.textContent = 'Показать все';
-        hideSlides();
+        setTimeout(slidesCondition, 1000);
     }
 });
 
 mobileSlider();
 showButton();
-hideSlides();
+slidesCondition();
 
 window.addEventListener('resize', function() {
     mobileSlider();
     showButton();
-    hideSlides();
+    slidesCondition();
+    heightControl();
 });
