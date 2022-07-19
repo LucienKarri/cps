@@ -1,4 +1,4 @@
-const swiper = document.querySelectorAll('.swiper-container');
+const swiper = document.querySelectorAll('.swiper');
 const swiperWrapper = document.querySelectorAll('.swiper-wrapper');
 const button = document.querySelectorAll('.expand-button');
 const burger = document.querySelector('.menu__link--burger');

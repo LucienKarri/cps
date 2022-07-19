@@ -25,8 +25,7 @@ ul{
 footer{
     border-top: 1px solid #D9FFF5;
 }
-.wrapper{position: relative;
-overflow-y: hidden;}
+.wrapper{}
 .container{
     display: flex;
     flex-direction: column;
