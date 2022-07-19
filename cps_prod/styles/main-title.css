@@ -1,0 +1,28 @@
+.main-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: 32px;
+}
+.main-title__text{
+    font-family: "TTLakes-Bold";
+    font-size: 28px;
+    letter-spacing: -0.6px;
+    line-height: 32px;
+    margin: 0;
+    padding-left: 12px;
+    border: 4px solid #F8F8F8;
+    border-left: 4px solid #41F6D7;
+}
+
+@media (min-width: 768px) {
+    .main-title__text{
+        padding-left: 20px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .main-title__text{
+        padding-left: 28px;
+    }
+}

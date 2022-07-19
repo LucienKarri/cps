@@ -1,0 +1,182 @@
+.price{
+    margin-left: 16px;
+}
+.price__item{
+    min-height: 160px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 16px;
+    color: #1B1C21;
+    background: #FFFFFF;
+    border-radius: 6px;
+}
+.price__item--title{
+    display: none;
+    color: #7E7E82;
+    opacity: 0.72;
+    letter-spacing: 0;
+    line-height: 16px;
+}
+.price__text{
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0.2px;
+}
+.price__text::before{
+    display: block;
+    font-family: "TTLakes-Medium";
+    color: #7E7E82;
+}
+.price__text--description::before{
+    content: "Ремонтные услуги";
+}
+.price__text--cost{
+    width: 103px;
+}
+.price__text--cost::before{
+    content: "Цена";
+}
+.price__text--time{
+    width: 103px;
+}
+.price__text--time::before{
+    content: "Срок";
+}
+.price__button{
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    font-family: "TTLakes-Bold";
+    text-transform: uppercase;
+    padding: 4px 40px 4px 12px;
+    border: none;
+    border-radius: 16px;
+    background: #FF3E79;
+    font-size: 12px;
+    line-height: 24px;
+    letter-spacing: -0.15px;
+    color: #FFFFFF;
+}
+.price__button::after{
+    content: "";
+    position: absolute;
+    margin-left: 8px;
+    width: 24px;
+    height: 24px;
+    background: url("../srcs/img/dropdown-white.svg") no-repeat 50% 50%;
+}
+.price__comment{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-left: 16px;
+    max-width: 288px;
+}
+.price__link{
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.2px;
+    color: #1B1C21;
+    font-family: "TTLakes-Medium";
+}
+.price__link::after{
+    content: "";
+    display: inline-block;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: url('../srcs/img/dropdown.svg') no-repeat 50% 50%;
+}
+
+@media (min-width:768px) {
+    .price{
+        margin: 0 24px;
+    }
+    .price__layout{
+        display: flex;
+        flex-direction: column;
+        background: #FFFFFF;
+        border-radius: 6px;
+    }
+    .price__item{
+        min-height: auto;
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        gap: 0;
+    }
+    .price__item::after{
+        content: "";
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 688px;
+        height: 1px;
+        background-color: #EAEAEA;
+        z-index: 10;
+    }
+    li:last-child .price__item::after{
+        display: none;
+    }
+    .price__item--title{
+        display: flex;
+        background: none;
+        border-radius: none;
+        color: #7E7E82;
+    }
+    .price__item--title::after{
+        display: none;
+    }
+    .price__text--description{
+        width: 372px;
+    }
+    .price__text--description::before{
+        display: none;
+    }
+    .price__text--cost::before{
+        display: none;
+    }
+    .price__text--time::before{
+        display: none;
+    }
+    .price__button{
+        position: static;
+    }
+    .price__comment{
+        margin-left: 24px;
+        max-width: 421px;
+    }
+    .price__link{
+        width: auto;
+    }
+}
+
+@media (min-width: 1440px) {
+    .price{
+        margin: 0 32px;
+    }
+    .price__item{
+        padding: 16px 24px;
+    }
+    .price__text--description{
+        width: 460px;
+    }
+    .price__text--cost{
+        width: 230px;
+    }
+    .price__text--time{
+        width: 200px;
+    }
+    .price__item::after{
+        width: 1008px;
+    }
+    .price__comment{
+        margin-left: 32px;
+    }
+}
