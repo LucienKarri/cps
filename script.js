@@ -173,6 +173,14 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
+/* click different area event */
+
+document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('side-menu__container') && sideMenu.classList.contains('side-menu--active')) {
+        burgerExit.click();
+    }
+});
+
 /* listen resize */
 
 window.addEventListener('resize', function() {

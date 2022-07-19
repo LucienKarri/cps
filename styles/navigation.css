@@ -20,7 +20,6 @@
 .navigation__list::-webkit-scrollbar{
     height: 0;
 }
-.navigation__item{}
 .navigation__link{
     font-family: "TTLakes-Medium";
     display: block;
