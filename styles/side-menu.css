@@ -4,6 +4,7 @@
     transform: translateX(-100%);
     transition: transform 1s;
     z-index: 10;
+    height: 100vh;
 }
 .side-menu--active{
     transform: translateX(0);
@@ -14,7 +15,7 @@
     box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);
     background: #FFFFFF;
     width: 320px;
-    height: 100vh;
+    height: 100%;
     overflow-y: auto;
 }
 .side-menu__container::-webkit-scrollbar{
