@@ -6,8 +6,23 @@ const sideMenu = document.querySelector('.side-menu');
 const container = document.querySelector('.container');
 const burgerExit = sideMenu.querySelector('.menu__link');
 const menuDisabled = document.querySelectorAll('.menu__link--disabled');
+const telButtons = document.querySelectorAll('.menu__link--tel');
+const modal = document.querySelector('.modal');
+const telButtonExit = modal.querySelector('.menu__link');
 let slidesList = [];
 let mySwiper = [];
+
+telButtons.forEach(element => {
+    element.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.classList.toggle('modal--active');
+    })
+});
+
+telButtonExit.addEventListener('click', function (e) {
+    e.preventDefault();
+        modal.classList.toggle('modal--active');
+});
 
 swiperWrapper.forEach(element => {
     slidesList.push(element.querySelectorAll('.swiper-slide'));
@@ -185,14 +200,18 @@ burgerExit.addEventListener('click', function (e) {
 
 document.addEventListener('keydown', function (e) {
     if (e.code == 'Escape') {
-        if (sideMenu.classList.contains('side-menu--active')) {
+        if (modal.classList.contains('modal--active')) {
+            telButtonExit.click();
+        } else if (sideMenu.classList.contains('side-menu--active')) {
             burgerExit.click();
         }
     }
 });
 
 document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('side-menu__container') && sideMenu.classList.contains('side-menu--active')) {
+    if (e.target.classList.contains('modal__container') && modal.classList.contains('modal--active')) {
+        telButtonExit.click();
+    } else if (e.target.classList.contains('side-menu__container') && sideMenu.classList.contains('side-menu--active')) {
         burgerExit.click();
     }
 });
