@@ -5,18 +5,9 @@ const burger = document.querySelector('.menu__link--burger');
 const sideMenu = document.querySelector('.side-menu');
 const container = document.querySelector('.container');
 const burgerExit = sideMenu.querySelector('.menu__link');
+const menuDisabled = document.querySelectorAll('.menu__link--disabled');
 let slidesList = [];
 let mySwiper = [];
-
-burger.addEventListener('click', function (e) {
-    e.preventDefault();
-    sideMenu.classList.toggle('side-menu--active');
-});
-
-burgerExit.addEventListener('click', function (e) {
-    e.preventDefault();
-    sideMenu.classList.toggle('side-menu--active');
-});
 
 swiperWrapper.forEach(element => {
     slidesList.push(element.querySelectorAll('.swiper-slide'));
@@ -119,51 +110,78 @@ function heightControl(swiperWrapper,btn) {
     }
 }
 
-/* init swiper */
-
-for (let i = 0; i < 3; i++) {
-    mobileSwiper(swiper[i], button, swiperWrapper);
+function linkControl() {
+    if (window.innerWidth >= 768 && window.innerWidth < 1440) {
+        menuDisabled.forEach(element => {
+            if (element.classList.contains('menu__link--disabled')) {
+                element.classList.toggle('menu__link--disabled');
+            }
+        });
+    } else {
+        menuDisabled.forEach(element => {
+            if (!element.classList.contains('menu__link--disabled')) {
+                element.classList.toggle('menu__link--disabled');
+            }
+        });
+    }
 }
 
-/* first control button */
+function swiperInit() {
+    for (let i = 0; i < 3; i++) {
+        mobileSwiper(swiper[i], button, swiperWrapper);
+    }
+}
 
+function initSlidesControl() {
+    let i = 0;
+    let j = 1;
+    while (i < 2) {
+        slidesControl(slidesList[i++], button[j++]);
+        heightControl(swiperWrapper[i++], button[j++]);
+    }
+}
+
+function expandButtonListener() {
+    for (let i = 1; i < 3; i++) {
+        button[i].addEventListener('click', function () {
+            let j;
+        if (button[i].dataset.num == 2) {
+            j = 0;
+        } else {
+            j = 1;
+        }
+        if (!button[i].classList.contains('expand-button--open')) {
+            showSlides(slidesList[j]);
+            button[i].classList.toggle('expand-button--open');
+            heightControl(swiperWrapper[j], button[i]);
+            button[i].textContent = 'Скрыть';
+            setTimeout(function() {swiperWrapper[j].style.transition = "none";}, 1000);
+        } else {
+            swiperWrapper[j].style.transition = "max-height 1s";
+            button[i].classList.toggle('expand-button--open');
+            heightControl(swiperWrapper[j], button[i]);
+            button[i].textContent = 'Показать все';
+            setTimeout(slidesControl, 1000, slidesList[j], button[i]);
+        }
+        });
+    }
+}
+
+swiperInit();
+linkControl();
 showHideButton(button);
+initSlidesControl();
+expandButtonListener();
 
-/* first control slides */
+burger.addEventListener('click', function (e) {
+    e.preventDefault();
+    sideMenu.classList.toggle('side-menu--active');
+});
 
-let i = 0;
-let j = 1;
-while (i < 2) {
-    slidesControl(slidesList[i++], button[j++]);
-}
-
-/* event for BUTTON */
-
-for (let i = 1; i < 3; i++) {
-    button[i].addEventListener('click', function () {
-        let j;
-    if (button[i].dataset.num == 2) {
-        j = 0;
-    } else {
-        j = 1;
-    }
-    if (!button[i].classList.contains('expand-button--open')) {
-        showSlides(slidesList[j]);
-        button[i].classList.toggle('expand-button--open');
-        heightControl(swiperWrapper[j], button[i]);
-        button[i].textContent = 'Скрыть';
-        setTimeout(function() {swiperWrapper[j].style.transition = "none";}, 1000);
-    } else {
-        swiperWrapper[j].style.transition = "max-height 1s";
-        button[i].classList.toggle('expand-button--open');
-        heightControl(swiperWrapper[j], button[i]);
-        button[i].textContent = 'Показать все';
-        setTimeout(slidesControl, 1000, slidesList[j], button[i]);
-    }
-    });
-}
-
-/* escape event */
+burgerExit.addEventListener('click', function (e) {
+    e.preventDefault();
+    sideMenu.classList.toggle('side-menu--active');
+});
 
 document.addEventListener('keydown', function (e) {
     if (e.code == 'Escape') {
@@ -173,28 +191,18 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
-/* click different area event */
-
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('side-menu__container') && sideMenu.classList.contains('side-menu--active')) {
         burgerExit.click();
     }
 });
 
-/* listen resize */
-
 window.addEventListener('resize', function() {
-    for (let i = 0; i < 3; i++) {
-        mobileSwiper(swiper[i], button, swiperWrapper);
-    }
+    swiperInit();
     showHideButton(button);
-    let i = 0;
-    let j = 1;
-    while (i < 2) {
-        slidesControl(slidesList[i], button[j]);
-        heightControl(swiperWrapper[i++], button[j++]);
-    }
+    initSlidesControl();
     if (window.innerWidth >= 1440 && sideMenu.classList.contains('side-menu--active')) {
         burgerExit.click();
     }
+    linkControl();
 });

@@ -18,6 +18,7 @@
         <link rel="stylesheet" href="styles/price.css">
         <link rel="stylesheet" href="styles/footer.css">
         <link rel="stylesheet" href="styles/side-menu.css">
+        <link rel="stylesheet" href="styles/modal.css">
     </head>
     <body>
         <!--aside-->
@@ -75,7 +76,7 @@
                 <div class="side-menu__footer">
                     <div class="side-menu__contacts">
                         <div class="menu">
-                            <a href="#" class="menu__link">
+                            <a href="#" class="menu__link menu__link--tel">
                                 <span class="menu__icon">
                                     <img src="srcs/img/call.svg" alt="">
                                 </span>
@@ -120,7 +121,7 @@
                         </a>
                     </div>
                     <div class="menu__group">
-                        <a href="#" class="menu__link menu__link--disabled">
+                        <a href="#" class="menu__link menu__link--disabled menu__link--tel">
                             <span class="menu__icon">
                                 <img src="srcs/img/call.svg" alt="">
                             </span>
@@ -461,6 +462,19 @@
                     <span class="footer__text">Информация, размещенная на данной странице, не является публичной офертой</span>
                 </div>
             </footer>
+        </div>
+        <div class="modal">
+            <div class="modal__container">
+                <h2 class="modal__title">Обратная связь</h2>
+                <form action="#" class="form">
+                    <input type="text" value="" placeholder="Имя" class="form__elem">
+                    <input type="tel" name="" id="" placeholder="Телефон" class="form__elem">
+                    <input type="email" name="" id="" placeholder="Электронная почта" class="form__elem">
+                    <textarea name="" id="" cols="" rows="4" placeholder="Сообщение" class="form__elem"></textarea>
+                    <p class="form__text">Нажимая “отправить”, вы даете согласие на <a href="#">обработку персональных данных</a> и соглашаетесь с нашей <a href="#">политикой конфиденциальности</a></p>
+                    <button type="submit" class="form__button">отправить</button>
+                </form>
+            </div>
         </div>
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         <script src="script.js"></script>
