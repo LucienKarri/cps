@@ -14,8 +14,7 @@
 .swiper-wrapper{
     padding: 0 16px;
 }
-.repair-slide{}
-.repair-slide--disabled{
+.swiper-slide--disabled{
     display: none;
 }
 .swiper-pagination-bullet{
@@ -29,7 +28,7 @@
     margin: 0 6px;
     background: #B5B6BC;
 }
-.repair-pagination{
+.swiper-pagination{
     position: static;
     margin-top: 16px;
 }
@@ -37,9 +36,7 @@
 @media (min-width:768px) {
     .swiper{
         width: auto;
-    }
-    .repair-container{
-        margin-left: 24px;
+        margin: 0 24px;
     }
     .swiper::after{
         display: none;
@@ -52,19 +49,20 @@
         gap: 16px 24px;
         width: auto;
         max-height: 164px;
+        overflow: hidden;
         transition: max-height 1s;
     }
     .repair-slide{
         width: 224px;
     }
-    .repair-pagination{
+    .swiper-pagination{
         display: none;
     }
 }
 
 @media (min-width:1440px) {
-    .repair-container{
-        margin-left: 32px;
+    .swiper{
+        margin: 0 32px;
     }
     .repair-wrapper{
         width: auto;

@@ -1,5 +1,3 @@
-.price{
-}
 .price__item{
     min-height: 160px;
     position: relative;
@@ -94,9 +92,6 @@
 }
 
 @media (min-width:768px) {
-    .price{
-        margin: 0 24px;
-    }
     .price__layout{
         display: flex;
         flex-direction: column;
@@ -157,9 +152,6 @@
 }
 
 @media (min-width: 1440px) {
-    .price{
-        margin: 0 32px;
-    }
     .price__item{
         padding: 16px 24px;
     }

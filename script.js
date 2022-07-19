@@ -11,14 +11,11 @@ let mySwiper = [];
 burger.addEventListener('click', function (e) {
     e.preventDefault();
     sideMenu.classList.toggle('side-menu--active');
-    container.style.opacity = 0.5;
-
 });
 
 burgerExit.addEventListener('click', function (e) {
     e.preventDefault();
     sideMenu.classList.toggle('side-menu--active');
-    container.style.opacity = 1;
 });
 
 swiperWrapper.forEach(element => {
@@ -27,7 +24,6 @@ swiperWrapper.forEach(element => {
 
 function mobileSwiper(swiper, btn, swiperWrapper) {
     if (window.innerWidth < 768 && swiper.dataset.mobile == 'false') {
-        console.log('init');
         if (swiper.dataset.num == 2) {
             mySwiper[swiper.dataset.num] = new Swiper(swiper, {
                 width: 260,
@@ -53,7 +49,6 @@ function mobileSwiper(swiper, btn, swiperWrapper) {
     if (window.innerWidth >= 768) {
         swiper.dataset.mobile = 'false';
         if (swiper.classList.contains('swiper-initialized')) {
-            console.log('des');
             mySwiper[swiper.dataset.num].destroy();
             let i = 0;
             let j = 1;
@@ -75,7 +70,7 @@ function showHideButton(btn) {
 function showSlides(list) {
     let i = list.length;
     while (i != 0) {
-        list[--i].classList.remove('repair-slide--disabled');
+        list[--i].classList.remove('swiper-slide--disabled');
     }
 }
 
@@ -85,31 +80,31 @@ function slidesControl(list, btn) {
         showSlides(list);
     }
     if (!btn.classList.contains('expand-button--open')) {
-        if (window.innerWidth >= 768 && window.innerWidth < 1120) {
+        if (window.innerWidth >= 768 && window.innerWidth < 1440) {
             if (btn.dataset.num == 3) {
                 while (i != 3) {
-                    list[--i].classList.add('repair-slide--disabled');
+                    list[--i].classList.add('swiper-slide--disabled');
                 }
             } else {
                 while (i != 6) {
-                    list[--i].classList.add('repair-slide--disabled');
+                    list[--i].classList.add('swiper-slide--disabled');
                 }
             }
         }
-        if (window.innerWidth >= 1120) {
+        if (window.innerWidth >= 1440) {
             if (btn.dataset.num == 3) {
                 while (i != 4) {
-                    list[--i].classList.add('repair-slide--disabled');
+                    list[--i].classList.add('swiper-slide--disabled');
                 }
                 while (i != 3) {
-                    list[--i].classList.remove('repair-slide--disabled');
+                    list[--i].classList.remove('swiper-slide--disabled');
                 }
             } else {
                 while (i != 8) {
-                    list[--i].classList.add('repair-slide--disabled');
+                    list[--i].classList.add('swiper-slide--disabled');
                 }
                 while (i != 6) {
-                    list[--i].classList.remove('repair-slide--disabled');
+                    list[--i].classList.remove('swiper-slide--disabled');
                 }
             }
         }
@@ -124,17 +119,26 @@ function heightControl(swiperWrapper,btn) {
     }
 }
 
-/* first call */
+/* init swiper */
 
 for (let i = 0; i < 3; i++) {
     mobileSwiper(swiper[i], button, swiperWrapper);
 }
+
+/* first control button */
+
 showHideButton(button);
+
+/* first control slides */
+
 let i = 0;
 let j = 1;
 while (i < 2) {
     slidesControl(slidesList[i++], button[j++]);
 }
+
+/* event for BUTTON */
+
 for (let i = 1; i < 3; i++) {
     button[i].addEventListener('click', function () {
         let j;
@@ -159,6 +163,18 @@ for (let i = 1; i < 3; i++) {
     });
 }
 
+/* escape event */
+
+document.addEventListener('keydown', function (e) {
+    if (e.code == 'Escape') {
+        if (sideMenu.classList.contains('side-menu--active')) {
+            burgerExit.click();
+        }
+    }
+});
+
+/* listen resize */
+
 window.addEventListener('resize', function() {
     for (let i = 0; i < 3; i++) {
         mobileSwiper(swiper[i], button, swiperWrapper);
@@ -170,7 +186,7 @@ window.addEventListener('resize', function() {
         slidesControl(slidesList[i], button[j]);
         heightControl(swiperWrapper[i++], button[j++]);
     }
-    if (window.innerWidth < 1440) {
-        container.style.opacity = 1;
+    if (window.innerWidth >= 1440 && sideMenu.classList.contains('side-menu--active')) {
+        burgerExit.click();
     }
 });
