@@ -114,6 +114,7 @@
     }
     .modal__container .menu{
         position: absolute;
+        margin-top: 0;
         top: 32px;
         right: 448px;
     }

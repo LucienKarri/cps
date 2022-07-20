@@ -11,6 +11,7 @@ const modal = document.querySelector('.modal');
 const modalForm = modal.querySelectorAll('.form__elem');
 const modalExit = modal.querySelector('.menu__link');
 const chatButtons = document.querySelectorAll('.menu__link--chat');
+let modalTitle = modal.querySelector('.modal__title');
 let slidesList = [];
 let mySwiper = [];
 //console.log(modalForm);
@@ -22,11 +23,12 @@ function switchModal() {
                 element.style.display = 'none';
             }
         });
+        modalTitle.textContent = 'Заказать звонок';
     } else {
         modalForm.forEach(element => {
             setTimeout(function() {element.style.display = 'inline-block';}, 500);
-            
         });
+        setTimeout(function() {modalTitle.textContent = 'Обратная связь';}, 500);
     }
 }
 
