@@ -76,7 +76,4 @@
     .menu__link{
         gap: 8px;
     }
-    .menu__link--burger-exit{
-        display: none;
-    }
 }

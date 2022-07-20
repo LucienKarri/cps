@@ -8,9 +8,36 @@ const burgerExit = sideMenu.querySelector('.menu__link');
 const menuDisabled = document.querySelectorAll('.menu__link--disabled');
 const telButtons = document.querySelectorAll('.menu__link--tel');
 const modal = document.querySelector('.modal');
-const telButtonExit = modal.querySelector('.menu__link');
+const modalForm = modal.querySelectorAll('.form__elem');
+const modalExit = modal.querySelector('.menu__link');
+const chatButtons = document.querySelectorAll('.menu__link--chat');
 let slidesList = [];
 let mySwiper = [];
+//console.log(modalForm);
+
+function switchModal() {
+    if (modal.classList.contains('modal--chat')) {
+        modalForm.forEach(element => {
+            if ((element.tagName === 'INPUT' && (element.getAttribute('type') === 'text' || element.getAttribute('type') === 'email')) || element.tagName === 'TEXTAREA') {
+                element.style.display = 'none';
+            }
+        });
+    } else {
+        modalForm.forEach(element => {
+            setTimeout(function() {element.style.display = 'inline-block';}, 500);
+            
+        });
+    }
+}
+
+chatButtons.forEach(element => {
+    element.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.classList.toggle('modal--active');
+        modal.classList.toggle('modal--chat');
+        switchModal();
+    })
+});
 
 telButtons.forEach(element => {
     element.addEventListener('click', function (e) {
@@ -19,9 +46,13 @@ telButtons.forEach(element => {
     })
 });
 
-telButtonExit.addEventListener('click', function (e) {
+modalExit.addEventListener('click', function (e) {
     e.preventDefault();
-        modal.classList.toggle('modal--active');
+    if (modal.classList.contains('modal--chat')) {
+        modal.classList.toggle('modal--chat');
+        switchModal();
+    }
+    modal.classList.toggle('modal--active');
 });
 
 swiperWrapper.forEach(element => {
@@ -182,11 +213,20 @@ function expandButtonListener() {
     }
 }
 
+function checkBurgerExit() {
+    if (window.innerWidth >= 1440) {
+        burgerExit.classList.add('menu__link--disabled')
+    } else {
+        burgerExit.classList.remove('menu__link--disabled')
+    }
+}
+
 swiperInit();
 linkControl();
 showHideButton(button);
 initSlidesControl();
 expandButtonListener();
+checkBurgerExit();
 
 burger.addEventListener('click', function (e) {
     e.preventDefault();
@@ -201,7 +241,7 @@ burgerExit.addEventListener('click', function (e) {
 document.addEventListener('keydown', function (e) {
     if (e.code == 'Escape') {
         if (modal.classList.contains('modal--active')) {
-            telButtonExit.click();
+            modalExit.click();
         } else if (sideMenu.classList.contains('side-menu--active')) {
             burgerExit.click();
         }
@@ -210,7 +250,7 @@ document.addEventListener('keydown', function (e) {
 
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('modal__container') && modal.classList.contains('modal--active')) {
-        telButtonExit.click();
+        modalExit.click();
     } else if (e.target.classList.contains('side-menu__container') && sideMenu.classList.contains('side-menu--active')) {
         burgerExit.click();
     }
@@ -224,4 +264,5 @@ window.addEventListener('resize', function() {
         burgerExit.click();
     }
     linkControl();
+    checkBurgerExit();
 });

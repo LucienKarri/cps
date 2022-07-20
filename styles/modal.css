@@ -1,15 +1,18 @@
 .modal{
     position: fixed;
     width: 100%;
-    top: 0;
-    right: 0;
+    height: 100%;
+    top: 0; right: 0;
     transform: translateX(100%);
-    transition: transform 1s;
+    transition: 1s;
+    opacity: 0;
+    visibility: hidden;
     z-index: 20;
-    height: 100vh;
 }
 .modal--active{
     transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
 }
 .modal__container{
     display: flex;
@@ -18,8 +21,12 @@
     box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);
     background: #FFFFFF;
     width: 320px;
-    height: 100%;
+    min-height: 100%;
     margin-left: auto;
+    overflow-y: auto;
+}
+.modal__container::-webkit-scrollbar{
+    height: 0;
 }
 .modal__container::before{
     content: '';
@@ -29,8 +36,15 @@
     height: 100%;
     top: 0; left: 0;
     background: #FFFFFF;
-    opacity: 0.96;
+    opacity: 0;
     z-index: -1;
+    transition: 1s;
+}
+.modal__container .menu{
+    margin-top: 24px;
+}
+.modal--active .modal__container::before{
+    opacity: 0.96;
 }
 .modal__title{
     font-family: "TTLakes-Bold";
@@ -96,5 +110,17 @@
 @media (min-width: 1440px) {
     .modal__container{
         width: 440px;
+        padding-top: 32px;
+    }
+    .modal__container .menu{
+        position: absolute;
+        top: 32px;
+        right: 448px;
+    }
+    .modal__title{
+        padding-left: 28px;
+    }
+    .form{
+        margin: 0 32px;
     }
 }
