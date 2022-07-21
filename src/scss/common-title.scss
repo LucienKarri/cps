@@ -1,0 +1,23 @@
+.common-title{
+    padding: $padding-s;
+    font-family: "TTLakes-Regular";
+    color: $color-text-lighter;
+    font-size: $text-size-m;
+    line-height: $line-height-m;
+    letter-spacing: -0.2px;
+    text-transform: uppercase;
+    background: linear-gradient(90deg, $color-body 0%, $color-background 98.61%);
+    border-top: 1px solid $color-border-divider;
+}
+
+@media (min-width: 768px) {
+    .common-title{
+        padding: $padding-s $padding-m;
+    }
+}
+
+@media (min-width: 1440px) {
+    .common-title{
+        padding: $padding-s $padding-x;
+    }
+}

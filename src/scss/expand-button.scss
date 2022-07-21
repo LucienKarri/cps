@@ -1,0 +1,39 @@
+.expand-button{
+    width: min-content;
+    font-family: "TTLakes-Medium";
+    position: relative;
+    border: none;
+    background-color: transparent;
+    white-space: nowrap;
+    font-size: $text-size-m;
+    line-height: $line-height-m;
+    font-weight: 500;
+    letter-spacing: -0.2px;
+    padding-left: $padding-x;
+    margin-top: $margin-s;
+    transform: scale(1);
+    transition: 0.15s;
+    @media (min-width: 768px) {
+        &{
+            margin-top: $margin-m;
+        }
+    }
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 24px;
+        width: 24px;
+        background-image: url("../img/expand.svg");
+    }
+}
+.expand-button:hover{
+    transform: scale(1.1);
+}
+.expand-button--disabled{
+    display:none;
+}
+.expand-button--open::before{
+    transform: rotate(180deg);
+}

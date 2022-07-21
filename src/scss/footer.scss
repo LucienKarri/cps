@@ -1,0 +1,43 @@
+.footer{
+    display: flex;
+    flex-direction: column;
+    margin: $margin-s 4px;
+    gap: 16px;
+    align-items: center;
+    transform: scale(1);
+    transition: 0.15s;
+}
+.footer a:hover{
+    transform: scale(1.05);
+}
+.footer__text{
+    text-align: center;
+    flex: 1 1 33%;
+    color: $color-text-lighter;
+    font-family: "TTLakes-Medium";
+    font-size: $text-size-s;
+    line-height: $line-height-s;
+    opacity: 0.72;
+}
+@media (min-width: 768px) {
+    .footer{
+        flex-direction: row;
+        margin: $margin-x $margin-m;
+        gap: 0;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+    .footer__text{
+        &:first-child{
+            text-align: left;
+        }
+        &:last-child{
+            text-align: right;
+        }
+    }
+}
+@media (min-width: 1440px) {
+    .footer{
+        margin: $margin-x;
+    }
+}
