@@ -16,7 +16,6 @@ const text = document.querySelector('.about-company__text');
 let modalTitle = modal.querySelector('.modal__title');
 let slidesList = [];
 let mySwiper = [];
-//console.log(modalForm);
 
 function switchModal() {
     if (modal.classList.contains('modal--callback')) {
@@ -204,7 +203,7 @@ function initSlidesControl() {
     let i = 0;
     let j = 1;
     while (i < 2) {
-        slidesControl(slidesList[i++], button[j++]);
+        slidesControl(slidesList[i], button[j]);
         heightControl(swiperWrapper[i++], button[j++]);
     }
 }
