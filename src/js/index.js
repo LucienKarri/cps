@@ -13,9 +13,17 @@ const modalForm = modal.querySelectorAll('.form__elem');
 const modalExit = modal.querySelector('.menu__link');
 const chatButtons = document.querySelectorAll('.menu__link--chat');
 const text = document.querySelector('.about-company__text');
+const body = document.querySelector('body');
 let modalTitle = modal.querySelector('.modal__title');
 let slidesList = [];
 let mySwiper = [];
+
+/*
+function windowWidthControl() {
+    modal.style.right = (window.innerWidth - body.clientWidth) / 2 + 'px';
+    modal.style.width = body.clientWidth + 'px';
+}
+*/
 
 function switchModal() {
     if (modal.classList.contains('modal--callback')) {
@@ -259,6 +267,7 @@ showHideButton(button);
 initSlidesControl();
 expandButtonListener();
 checkBurgerExit();
+//windowWidthControl();
 
 burger.addEventListener('click', function (e) {
     e.preventDefault();
@@ -295,6 +304,7 @@ window.addEventListener('resize', function() {
     if (window.innerWidth >= 1440 && sideMenu.classList.contains('side-menu--active')) {
         burgerExit.click();
     }
+//    windowWidthControl();
     showText(button[0]);
     linkControl();
     checkBurgerExit();
