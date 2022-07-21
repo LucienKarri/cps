@@ -1,0 +1,48 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    background-color: $color-html;
+}
+
+body{
+    margin: 0 auto;
+    background-color: $color-body;
+    font-family: "TTLakes-Regular";
+    color: $color-text;
+    letter-spacing: -0.2px;
+}
+
+header{
+    background-color: $color-background;
+    border-bottom: 1px solid $color-border-divider;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul{
+    list-style: none;
+}
+
+footer{
+    border-top: 1px solid $color-border-divider;
+}
+
+@media (min-width: $window-width-m) {
+    body{
+        width: $window-width-m;
+    }
+}
+
+@media (min-width: $window-width-x) {
+    body{
+        width: $window-width-x;
+    }
+    header{
+        display: none;
+    }
+}

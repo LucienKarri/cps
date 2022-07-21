@@ -13,20 +13,15 @@
     margin-top: $margin-s;
     transform: scale(1);
     transition: 0.15s;
-    @media (min-width: 768px) {
-        &{
-            margin-top: $margin-m;
-        }
-    }
-    &::before{
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 24px;
-        width: 24px;
-        background-image: url("../img/expand.svg");
-    }
+}
+.expand-button::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 24px;
+    width: 24px;
+    background-image: url("../img/expand.svg");
 }
 .expand-button:hover{
     transform: scale(1.1);
@@ -36,4 +31,10 @@
 }
 .expand-button--open::before{
     transform: rotate(180deg);
+}
+
+@media (min-width: $window-width-m) {
+    .expand-button{
+        margin-top: $margin-m;
+    }
 }

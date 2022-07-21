@@ -7,9 +7,11 @@
     transform: scale(1);
     transition: 0.15s;
 }
+
 .footer a:hover{
     transform: scale(1.05);
 }
+
 .footer__text{
     text-align: center;
     flex: 1 1 33%;
@@ -19,7 +21,8 @@
     line-height: $line-height-s;
     opacity: 0.72;
 }
-@media (min-width: 768px) {
+
+@media (min-width: $window-width-m) {
     .footer{
         flex-direction: row;
         margin: $margin-x $margin-m;
@@ -27,6 +30,7 @@
         justify-content: space-between;
         align-items: flex-start;
     }
+
     .footer__text{
         &:first-child{
             text-align: left;
@@ -36,7 +40,7 @@
         }
     }
 }
-@media (min-width: 1440px) {
+@media (min-width: $window-width-x) {
     .footer{
         margin: $margin-x;
     }

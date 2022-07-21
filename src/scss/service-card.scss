@@ -16,6 +16,7 @@
     height: 128px;
     align-items: flex-end;
 }
+
 .service-card__text{
     font-family: "TTLakes-Medium";
     align-self: flex-start;
@@ -23,6 +24,7 @@
     line-height: $line-height-m;
     color: $color-text;
 }
+
 .service-card__icon{
     position: relative;
     width: 36px;

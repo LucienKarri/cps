@@ -7,12 +7,14 @@
 .main-title .menu{
     display: none;
 }
+
 .menu__group{
     display: flex;
     align-items: center;
     gap: 16px;
     height: 87px;
 }
+
 .menu__link{
     display: flex;
     font-family: "TTLakes-Medium";
@@ -36,6 +38,7 @@
     border-radius: 1px;
     background-color: $color-divider;
 }
+
 .menu__icon{
     position: relative;
     width: 40px;
@@ -49,6 +52,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
 .menu__text{
 	font-size: $text-size-m;
 	line-height: 40px;
@@ -57,10 +61,11 @@
 	color: $color-text;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $window-width-m) {
     .menu{
         margin: 0 $margin-m;
     }
+
     .menu__link--burger::after{
         content: "";
         display: block;
@@ -72,12 +77,13 @@
     }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: $window-width-x) {
     .main-title .menu{
         display: flex;
         margin: 0;
         gap: 32px
     }
+    
     .menu__link{
         gap: 8px;
     }

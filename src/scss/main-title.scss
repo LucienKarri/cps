@@ -4,6 +4,7 @@
     align-items: center;
     margin-right: $margin-x;
 }
+
 .main-title__text{
     font-family: "TTLakes-Bold";
     font-size: $text-size-xl;
@@ -15,13 +16,13 @@
     border-left: 4px solid $color-border-title;
 }
 
-@media (min-width: 768px) {
+@media (min-width: $window-width-m) {
     .main-title__text{
         padding-left: 20px;
     }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: $window-width-x) {
     .main-title__text{
         padding-left: 28px;
     }

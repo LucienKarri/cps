@@ -17,6 +17,7 @@
     letter-spacing: 0;
     line-height: 16px;
 }
+
 .price__text{
     font-size: $text-size-s;
     line-height: $line-height-s;
@@ -42,6 +43,7 @@
 .price__text--time::before{
     content: "Срок";
 }
+
 .price__button{
     position: absolute;
     bottom: 16px;
@@ -70,6 +72,7 @@
 .price__button:hover{
     transform: scale(1.1);
 }
+
 .price__comment{
     display: flex;
     flex-direction: column;
@@ -77,6 +80,7 @@
     margin-left: $margin-s;
     max-width: 288px;
 }
+
 .price__link{
     width: 200px;
     display: inline-block;
@@ -101,13 +105,14 @@
     background: url('../img/dropdown.svg') no-repeat 50% 50%;
 }
 
-@media (min-width:768px) {
+@media (min-width: $window-width-m) {
     .price__layout{
         display: flex;
         flex-direction: column;
         background: $color-background;
         border-radius: 6px;
     }
+
     .price__item{
         min-height: auto;
         position: relative;
@@ -137,6 +142,7 @@
     .price__item--title::after{
         display: none;
     }
+
     .price__text--description{
         width: 372px;
     }
@@ -149,22 +155,29 @@
     .price__text--time::before{
         display: none;
     }
+
     .price__button{
         position: static;
     }
+
     .price__comment{
         margin-left: $margin-m;
         max-width: 421px;
     }
+    
     .price__link{
         width: auto;
     }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: $window-width-x) {
     .price__item{
         padding: $padding-s $padding-m;
     }
+    .price__item::after{
+        width: 1008px;
+    }
+
     .price__text--description{
         width: 460px;
     }
@@ -174,9 +187,7 @@
     .price__text--time{
         width: 200px;
     }
-    .price__item::after{
-        width: 1008px;
-    }
+    
     .price__comment{
         margin-left: $margin-x;
     }

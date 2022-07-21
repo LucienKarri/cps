@@ -1,20 +1,5 @@
 .swiper{
     width: 100%;
-    &-pagination{
-        position: static;
-        margin-top: $margin-s;
-        &-bullet{
-            margin: 0 6px;
-            width: 12px;
-            height: 12px;
-            background: $color-bullet;
-            opacity: 1;
-            &-active{
-                margin: 0 6px;
-                background: $color-bullet-active;
-            }
-        }
-    }
 }
 .swiper::after{
     content: "";
@@ -26,13 +11,32 @@
     background: linear-gradient(270deg, $color-body 16.84%, rgba(248, 248, 248, 0.0001) 100%);
     z-index: 10;
 }
+
 .swiper-wrapper{
     padding: 0 $padding-s;
 }
+
 .swiper-slide--disabled{
     display: none;
 }
-@media (min-width:768px) {
+
+.swiper-pagination{
+    position: static;
+    margin-top: $margin-s;
+}
+.swiper-pagination-bullet{
+    margin: 0 6px;
+    width: 12px;
+    height: 12px;
+    background: $color-bullet;
+    opacity: 1;
+}
+.swiper-pagination-bullet-active{
+    margin: 0 6px;
+    background: $color-bullet-active;
+}
+
+@media (min-width: $window-width-m) {
     .swiper{
         width: auto;
         margin: 0 $margin-s;
@@ -40,9 +44,11 @@
     .swiper::after{
         display: none;
     }
+
     .swiper-wrapper{
         padding: 0;
     }
+
     .repair-wrapper{
         flex-wrap: wrap;
         gap: 16px 24px;
@@ -51,22 +57,26 @@
         overflow: hidden;
         transition: max-height 1s;
     }
+
     .repair-slide{
         width: 224px;
     }
+
     .swiper-pagination{
         display: none;
     }
 }
 
-@media (min-width:1440px) {
+@media (min-width: $window-width-x) {
     .swiper{
         margin: 0 $margin-x;
     }
+
     .repair-wrapper{
         width: auto;
         gap: 16px 32px;
     }
+    
     .repair-slide{
         width: 240px;
     }

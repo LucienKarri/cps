@@ -19,7 +19,7 @@ let mySwiper = [];
 //console.log(modalForm);
 
 function switchModal() {
-    if (modal.classList.contains('modal--chat')) {
+    if (modal.classList.contains('modal--callback')) {
         modalForm.forEach(element => {
             if ((element.tagName === 'INPUT' && (element.getAttribute('type') === 'text' || element.getAttribute('type') === 'email')) || element.tagName === 'TEXTAREA') {
                 element.style.display = 'none';
@@ -38,8 +38,6 @@ chatButtons.forEach(element => {
     element.addEventListener('click', function (e) {
         e.preventDefault();
         modal.classList.toggle('modal--active');
-        modal.classList.toggle('modal--chat');
-        switchModal();
     })
 });
 
@@ -47,13 +45,15 @@ telButtons.forEach(element => {
     element.addEventListener('click', function (e) {
         e.preventDefault();
         modal.classList.toggle('modal--active');
+        modal.classList.toggle('modal--callback');
+        switchModal();
     })
 });
 
 modalExit.addEventListener('click', function (e) {
     e.preventDefault();
-    if (modal.classList.contains('modal--chat')) {
-        modal.classList.toggle('modal--chat');
+    if (modal.classList.contains('modal--callback')) {
+        modal.classList.toggle('modal--callback');
         switchModal();
     }
     modal.classList.toggle('modal--active');

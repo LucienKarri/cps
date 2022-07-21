@@ -10,6 +10,7 @@
     width: 24px;
     background: linear-gradient(270deg, $color-body 16.84%, rgba(248, 248, 248, 0.0001) 100%);
 }
+
 .navigation__list{
     display: flex;
     align-items: center;
@@ -20,6 +21,7 @@
 .navigation__list::-webkit-scrollbar{
     height: 0;
 }
+
 .navigation__link{
     font-family: "TTLakes-Medium";
     display: block;
@@ -37,16 +39,17 @@
     border-color: $color-border-hover;
 }
 
-@media (min-width:768px) {
+@media (min-width: $window-width-m) {
     .navigation__list{
         padding: 0 $padding-m;
     }
 }
 
-@media (min-width: 1440px) {
+@media (min-width: $window-width-x) {
     .navigation::after{
         display: none;
     }
+    
     .navigation__list{
         flex-wrap: wrap;
         padding: 0 $padding-x;

@@ -1,0 +1,31 @@
+.container{
+    position: relative;
+    transform: translateX();
+    transition: 1s;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.container__section{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+@media (min-width: $window-width-m) {
+    .container{
+        gap: 32px;
+    }
+    .container__section{
+        gap: 24px;
+    }
+}
+
+@media (min-width: $window-width-x) {
+    .container{
+        transform: translateX(320px);
+        width: 1120px;
+        padding-top: 42px;
+        gap: 50px;
+    }
+}

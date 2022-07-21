@@ -14,6 +14,7 @@
     opacity: 1;
     visibility: visible;
 }
+
 .modal__container{
     display: flex;
     flex-direction: column;
@@ -46,6 +47,7 @@
 .modal--active .modal__container::before{
     opacity: 0.96;
 }
+
 .modal__title{
     font-family: "TTLakes-Bold";
     font-size: $text-size-x;
@@ -56,71 +58,7 @@
     border-left: 4px solid $color-border-title;
 }
 
-.form{
-    font-family: "TTLakes-Medium";
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin: 0 $margin-s;
-}
-.form__elem{
-    font-family: "TTLakes-Medium";
-    padding: 12px $padding-s;
-    background: $color-background;
-    border: 1px solid $color-border;
-    border-radius: 8px;
-    font-size: $text-size-m;
-    line-height: $line-height-m;
-    letter-spacing: -0.2px;
-    color: $color-bullet-active;
-}
-.form__elem:focus{
-    border-color: $color-border-hover;
-}
-.form__text{
-    font-size: $text-size-s;
-    line-height: $line-height-s;
-    color: $color-text-lighter;
-}
-.form__text a{
-    color: $color-text-attention;
-    transform: scale(1);
-    transition: 0.15s;
-}
-.form__text a:hover{
-    transform: scale(1.1);
-}
-.form__button{
-    align-self: flex-end;
-    width: min-content;
-    bottom: 16px;
-    right: 16px;
-    font-family: "TTLakes-Bold";
-    text-transform: uppercase;
-    padding: 4px 40px 4px 12px;
-    border: none;
-    border-radius: 16px;
-    background: $color-button;
-    font-size: $text-button;
-    line-height: 24px;
-    letter-spacing: -0.15px;
-    color: $color-button-text;
-    transform: scale(1);
-    transition: 0.15s;
-}
-.form__button:hover{
-    transform: scale(1.1);
-}
-.form__button::after{
-    content: "";
-    position: absolute;
-    margin-left: 8px;
-    width: 24px;
-    height: 24px;
-    background: url("../img/dropdown-white.svg") no-repeat 50% 50%;
-}
-
-@media (min-width: 1440px) {
+@media (min-width: $window-width-x) {
     .modal__container{
         width: 440px;
         padding-top: $padding-x;
@@ -131,10 +69,8 @@
         top: 32px;
         right: 448px;
     }
+    
     .modal__title{
         padding-left: 28px;
-    }
-    .form{
-        margin: 0 $margin-x;
     }
 }
