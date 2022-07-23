@@ -7,25 +7,19 @@ const burger = document.querySelector('.menu__link--burger');
 const sideMenu = document.querySelector('.side-menu');
 const burgerExit = sideMenu.querySelector('.menu__link');
 const menuDisabled = document.querySelectorAll('.menu__link--disabled');
-const telButtons = document.querySelectorAll('.menu__link--tel');
+const telButtons = document.querySelectorAll('.callback-btn');
 const modal = document.querySelector('.modal');
 const modalForm = modal.querySelectorAll('.form__elem');
 const modalExit = modal.querySelector('.menu__link');
-const chatButtons = document.querySelectorAll('.menu__link--chat');
+const chatButtons = document.querySelectorAll('.feedback-btn');
 const text = document.querySelector('.about-company__text');
-const body = document.querySelector('body');
 let modalTitle = modal.querySelector('.modal__title');
 let slidesList = [];
 let mySwiper = [];
 
-/*
-function windowWidthControl() {
-    modal.style.right = (window.innerWidth - body.clientWidth) / 2 + 'px';
-    modal.style.width = body.clientWidth + 'px';
-}
-*/
-
+/*Функция, которая отвечает за переключение формы, в зависимости от запроса*/
 function switchModal() {
+    /*Проверяем, какая кнопка была нажата и отключаем/включаем необходимые поля для ввода. Таймауты для достижения плавности (display:none не работает с transition)*/
     if (modal.classList.contains('modal--callback')) {
         modalForm.forEach(element => {
             if ((element.tagName === 'INPUT' && (element.getAttribute('type') === 'text' || element.getAttribute('type') === 'email')) || element.tagName === 'TEXTAREA') {
@@ -41,42 +35,19 @@ function switchModal() {
     }
 }
 
-chatButtons.forEach(element => {
-    element.addEventListener('click', function (e) {
-        e.preventDefault();
-        modal.classList.toggle('modal--active');
-    })
-});
-
-telButtons.forEach(element => {
-    element.addEventListener('click', function (e) {
-        e.preventDefault();
-        modal.classList.toggle('modal--active');
-        modal.classList.toggle('modal--callback');
-        switchModal();
-    })
-});
-
-modalExit.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (modal.classList.contains('modal--callback')) {
-        modal.classList.toggle('modal--callback');
-        switchModal();
-    }
-    modal.classList.toggle('modal--active');
-});
-
+/*Заполняем листы слайдами. Каждому элементу массива - набор слайдов из одного свайпера*/
 swiperWrapper.forEach(element => {
     slidesList.push(element.querySelectorAll('.swiper-slide'));
 });
 
+/*В зависимости от разрешения экрана решаем, инициализировать слайдер или нет. По тому же принципу - разрушаем его*/
 function mobileSwiper(swiper, btn, swiperWrapper) {
     if (window.innerWidth < 768 && swiper.dataset.mobile == 'false') {
+        /*для конкретного свайпера, свайпера с ценами, создаем свайпер с другой шириной слайдера*/
         if (swiper.dataset.num == 2) {
             mySwiper[swiper.dataset.num] = new Swiper(swiper, {
                 modules: [Navigation, Pagination],
                 width: 260,
-                height: 190,
                 spaceBetween: 16,
                 pagination: {
                     el: '.swiper-pagination',
@@ -111,56 +82,14 @@ function mobileSwiper(swiper, btn, swiperWrapper) {
     }
 }
 
+/*в зависимости от разрешения экрана решаем: отображать или нет раскрывающие кнопки*/
 function showHideButton(btn) {
     for (let i = 1; i < btn.length; i++) {
         btn[i].classList.toggle('expand-button--disabled', window.innerWidth < 768)
     }
 }
 
-function showSlides(list) {
-    let i = list.length;
-    while (i != 0) {
-        list[--i].classList.remove('swiper-slide--disabled');
-    }
-}
-
-function slidesControl(list, btn) {
-    let i = list.length;
-    if (window.innerWidth < 768 || btn.classList.contains('expand-button--open')) {
-        showSlides(list);
-    }
-    if (!btn.classList.contains('expand-button--open')) {
-        if (window.innerWidth >= 768 && window.innerWidth < 1440) {
-            if (btn.dataset.num == 3) {
-                while (i != 3) {
-                    list[--i].classList.add('swiper-slide--disabled');
-                }
-            } else {
-                while (i != 6) {
-                    list[--i].classList.add('swiper-slide--disabled');
-                }
-            }
-        }
-        if (window.innerWidth >= 1440) {
-            if (btn.dataset.num == 3) {
-                while (i != 4) {
-                    list[--i].classList.add('swiper-slide--disabled');
-                }
-                while (i != 3) {
-                    list[--i].classList.remove('swiper-slide--disabled');
-                }
-            } else {
-                while (i != 8) {
-                    list[--i].classList.add('swiper-slide--disabled');
-                }
-                while (i != 6) {
-                    list[--i].classList.remove('swiper-slide--disabled');
-                }
-            }
-        }
-    }
-}
-
+/*Определяем дельту изменения высоты по нажатию на кнопку. Функция принимает конкретный набор слайдов и кнопку, которая соответствует этому набору*/
 function heightControl(swiperWrapper,btn) {
     if (btn.classList.contains('expand-button--open')) {
         swiperWrapper.style.maxHeight = swiperWrapper.scrollHeight + 'px';
@@ -169,6 +98,7 @@ function heightControl(swiperWrapper,btn) {
     }
 }
 
+/*Определяем дельту изменения высоты по нажатию на кнопку(для текста). Функция принимает конкретную кнопку, которая отвечает за раскрытие текста*/
 function showText(btn) {
     if (btn.classList.contains('expand-button--open')) {
         text.style.maxHeight = text.scrollHeight + 'px';
@@ -185,6 +115,7 @@ function showText(btn) {
     }
 }
 
+/*В зависимости от разрешения экрана определяем какие элементы верхнего меню отображать*/
 function linkControl() {
     if (window.innerWidth >= 768 && window.innerWidth < 1440) {
         menuDisabled.forEach(element => {
@@ -201,21 +132,23 @@ function linkControl() {
     }
 }
 
+/*Первоначальная инициализация свайперов*/
 function swiperInit() {
     for (let i = 0; i < 3; i++) {
         mobileSwiper(swiper[i], button, swiperWrapper);
     }
 }
 
-function initSlidesControl() {
+/*проверяем корректное значение высоты для каждого раскрывающегося списка*/
+function slidesControl() {
     let i = 0;
     let j = 1;
     while (i < 2) {
-        slidesControl(slidesList[i], button[j]);
         heightControl(swiperWrapper[i++], button[j++]);
     }
 }
 
+/*добавляем обработчик события  на каждую раскрывающую кнопку*/
 function expandButtonListener() {
     for (let i = 0; i < 3; i++) {
         button[i].addEventListener('click', function () {
@@ -225,10 +158,10 @@ function expandButtonListener() {
             } else {
                 j = 1;
             }
+            /*Если кнопка неактивна, в состоянии "показать все", добавляем активный класс -> в зависимости от принадлежности кнопки определяем функцию контроля высоты. Проделываем в обратном порядке, если состояние кнопки "свернуть"*/
             if (!button[i].classList.contains('expand-button--open')) {
                 button[i].classList.toggle('expand-button--open');
                 if (i != 0) {
-                    showSlides(slidesList[j]);
                     heightControl(swiperWrapper[j], button[i]);
                     setTimeout(function() {swiperWrapper[j].style.transition = "none";}, 1000);
                 } else {
@@ -241,7 +174,6 @@ function expandButtonListener() {
                 if (i != 0) {
                     swiperWrapper[j].style.transition = "max-height 1s";
                     heightControl(swiperWrapper[j], button[i]);
-                    setTimeout(slidesControl, 1000, slidesList[j], button[i]);
                     button[i].textContent = 'Показать все';
                 } else {
                     text.style.transition = "max-height 1s";
@@ -253,6 +185,7 @@ function expandButtonListener() {
     }
 }
 
+/*В зависимости от разрешения, определяем отображать или скрыть кнопку закрытия бокового меню*/
 function checkBurgerExit() {
     if (window.innerWidth >= 1440) {
         burgerExit.classList.add('menu__link--disabled')
@@ -261,24 +194,47 @@ function checkBurgerExit() {
     }
 }
 
-swiperInit();
-linkControl();
-showHideButton(button);
-initSlidesControl();
-expandButtonListener();
-checkBurgerExit();
-//windowWidthControl();
-
+/*обработчик события для открытия бокового меню*/
 burger.addEventListener('click', function (e) {
     e.preventDefault();
     sideMenu.classList.toggle('side-menu--active');
 });
 
+/*обработчик события для закрытия бокового меню*/
 burgerExit.addEventListener('click', function (e) {
     e.preventDefault();
     sideMenu.classList.toggle('side-menu--active');
 });
 
+/*обработчик события для открытия окна обратной связи*/
+chatButtons.forEach(element => {
+    element.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.classList.toggle('modal--active');
+    })
+});
+
+/*обработчик события для открытия окна заказа звонка*/
+telButtons.forEach(element => {
+    element.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.classList.toggle('modal--active');
+        modal.classList.toggle('modal--callback');
+        switchModal();
+    })
+});
+
+/*обработчик события для закрытия окна заказа звонка или окна обратной связи*/
+modalExit.addEventListener('click', function (e) {
+    e.preventDefault();
+    if (modal.classList.contains('modal--callback')) {
+        modal.classList.toggle('modal--callback');
+        switchModal();
+    }
+    modal.classList.toggle('modal--active');
+});
+
+/*обработчик события для закрытия окон через escape*/
 document.addEventListener('keydown', function (e) {
     if (e.code == 'Escape') {
         if (modal.classList.contains('modal--active')) {
@@ -289,7 +245,9 @@ document.addEventListener('keydown', function (e) {
     }
 });
 
+/*обработчик события для закрытия окон, при клике вне окна*/
 document.addEventListener('click', function (e) {
+    console.log(e.target);
     if (e.target.classList.contains('modal__container') && modal.classList.contains('modal--active')) {
         modalExit.click();
     } else if (e.target.classList.contains('side-menu__container') && sideMenu.classList.contains('side-menu--active')) {
@@ -297,14 +255,22 @@ document.addEventListener('click', function (e) {
     }
 });
 
+/*первоначальный вызов функций*/
+swiperInit();
+linkControl();
+showHideButton(button);
+slidesControl();
+expandButtonListener();
+checkBurgerExit();
+
+/*обработчик события ресайза, чтобы подстраиваться под размеры окна*/
 window.addEventListener('resize', function() {
     swiperInit();
     showHideButton(button);
-    initSlidesControl();
+    slidesControl();
     if (window.innerWidth >= 1440 && sideMenu.classList.contains('side-menu--active')) {
         burgerExit.click();
     }
-//    windowWidthControl();
     showText(button[0]);
     linkControl();
     checkBurgerExit();

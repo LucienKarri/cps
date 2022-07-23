@@ -4,17 +4,16 @@
     margin: $margin-s 4px;
     gap: 16px;
     align-items: center;
-    transform: scale(1);
-    transition: 0.15s;
 }
 
-.footer a:hover{
-    transform: scale(1.05);
+.footer__link:hover{
+    color: $color-text-attention;
+    transition: 0.15s;
 }
 
 .footer__text{
     text-align: center;
-    flex: 1 1 33%;
+    flex-basis: 33.33%;
     color: $color-text-lighter;
     font-family: "TTLakes-Medium";
     font-size: $text-size-s;
@@ -25,10 +24,8 @@
 @media (min-width: $window-width-m) {
     .footer{
         flex-direction: row;
-        margin: $margin-x $margin-m;
         gap: 0;
-        justify-content: space-between;
-        align-items: flex-start;
+        margin: $margin-x $margin-m;
     }
 
     .footer__text{

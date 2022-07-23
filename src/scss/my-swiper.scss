@@ -16,10 +16,6 @@
     padding: 0 $padding-s;
 }
 
-.swiper-slide--disabled{
-    display: none;
-}
-
 .swiper-pagination{
     position: static;
     margin-top: $margin-s;
@@ -39,7 +35,7 @@
 @media (min-width: $window-width-m) {
     .swiper{
         width: auto;
-        margin: 0 $margin-s;
+        margin: 0 $margin-m;
     }
     .swiper::after{
         display: none;

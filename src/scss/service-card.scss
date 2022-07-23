@@ -5,11 +5,8 @@
     background: $color-background;
     border: 1px solid $color-border;
     border-radius: 6px;
-    transform: scale(0.95);
-    transition: 0.15s;
 }
 .service-card:hover{
-    transform: scale(1);
     border-color: $color-border-hover;
 }
 .service-card--type{
@@ -26,15 +23,11 @@
 }
 
 .service-card__icon{
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
     height: 36px;
     border: 2px solid $color-button;
     border-radius: 50%;
-}
-.service-card__icon img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
 }

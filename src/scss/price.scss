@@ -1,11 +1,15 @@
 .price__item{
-    min-height: 160px;
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
+    display: grid;
+    grid-template-columns: auto 120px;
+    grid-template-areas: 
+        "description    description"
+        "cost           cost"
+        "time           button";
+    align-items: end;
+    row-gap: 16px;
     padding: $padding-s;
+    height: 158px;
     color: $color-text;
     background: $color-background;
     border-radius: 6px;
@@ -28,26 +32,28 @@
     font-family: "TTLakes-Medium";
     color: $color-text-lighter;
 }
+.price__text--description{
+    grid-area: description;
+    align-self: start;
+}
 .price__text--description::before{
     content: "Ремонтные услуги";
 }
 .price__text--cost{
-    width: 103px;
+    grid-area: cost;
 }
 .price__text--cost::before{
     content: "Цена";
 }
 .price__text--time{
-    width: 103px;
+    grid-area: time;
 }
 .price__text--time::before{
     content: "Срок";
 }
 
 .price__button{
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
+    grid-area: button;
     font-family: "TTLakes-Bold";
     text-transform: uppercase;
     padding: 4px 40px 4px 12px;
@@ -59,7 +65,7 @@
     letter-spacing: -0.15px;
     color: $color-button-text;
     transform: scale(1);
-    transition: 0.15s;
+    transition: 0.3s;
 }
 .price__button::after{
     content: "";
@@ -70,7 +76,7 @@
     background: url("../img/dropdown-white.svg") no-repeat 50% 50%;
 }
 .price__button:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .price__comment{
@@ -90,11 +96,11 @@
     letter-spacing: -0.2px;
     color: $color-text;
     font-family: "TTLakes-Medium";
-    transform: scale(1);
+    opacity: 1;
     transition: 0.15s;
 }
 .price__link:hover{
-    transform: scale(1.05);
+    opacity: 0.8;
 }
 .price__link::after{
     content: "";
@@ -107,18 +113,19 @@
 
 @media (min-width: $window-width-m) {
     .price__layout{
-        display: flex;
-        flex-direction: column;
+        display: grid;
         background: $color-background;
         border-radius: 6px;
     }
 
     .price__item{
-        min-height: auto;
+        height: auto;
         position: relative;
-        flex-direction: row;
+        grid-template-columns: auto 100px 100px 120px;
+        grid-template-areas: 
+            "description cost time button";
         align-items: center;
-        gap: 0;
+        row-gap: 0;
     }
     .price__item::after{
         content: "";
@@ -127,6 +134,7 @@
         display: block;
         width: 688px;
         height: 1px;
+        margin: 0 $margin-s;
         background-color: $color-divider;
         z-index: 10;
     }
@@ -134,17 +142,16 @@
         display: none;
     }
     .price__item--title{
-        display: flex;
+        display: grid;
         background: none;
         border-radius: none;
-        color: $color-text-lighter;
     }
     .price__item--title::after{
         display: none;
     }
 
     .price__text--description{
-        width: 372px;
+        align-self: auto;
     }
     .price__text--description::before{
         display: none;
@@ -154,10 +161,6 @@
     }
     .price__text--time::before{
         display: none;
-    }
-
-    .price__button{
-        position: static;
     }
 
     .price__comment{
@@ -173,19 +176,11 @@
 @media (min-width: $window-width-x) {
     .price__item{
         padding: $padding-s $padding-m;
+        grid-template-columns: auto 210px 210px 120px;
     }
     .price__item::after{
         width: 1008px;
-    }
-
-    .price__text--description{
-        width: 460px;
-    }
-    .price__text--cost{
-        width: 230px;
-    }
-    .price__text--time{
-        width: 200px;
+        margin: 0 $margin-m;
     }
     
     .price__comment{

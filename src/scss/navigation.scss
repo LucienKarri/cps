@@ -22,21 +22,24 @@
     height: 0;
 }
 
+.navigation__item{
+    border: 2px solid transparent;
+    border-radius: 6px;
+}
+.navigation__item:hover{
+    background-color: $color-background;
+    border-color: $color-border-hover;
+}
+
 .navigation__link{
     font-family: "TTLakes-Medium";
     display: block;
     padding: 8px $padding-s;
-    white-space: nowrap;
-    border: 2px solid transparent;
-    border-radius: 6px;
     font-size: $text-size-m;
     line-height: $line-height-m;
     letter-spacing: -0.2px;
+    white-space: nowrap;
     color: $color-text-lighter;
-}
-.navigation__link:hover{
-    background-color: $color-background;
-    border-color: $color-border-hover;
 }
 
 @media (min-width: $window-width-m) {

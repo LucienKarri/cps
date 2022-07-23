@@ -2,24 +2,26 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 0 $margin-s;
 }
+
 .main-title .menu{
     display: none;
+}
+
+.side-menu__contacts .menu{
+    justify-content: flex-start;
+    gap: 16px;
 }
 
 .menu__group{
     display: flex;
     align-items: center;
     gap: 16px;
-    height: 87px;
+    margin: 18px 0;
 }
 
 .menu__link{
     display: flex;
-    font-family: "TTLakes-Medium";
-    font-size: $text-size-m;
-    line-height: $line-height-m;
     transform: scale(1);
     transition: 0.15s;
 }
@@ -40,20 +42,17 @@
 }
 
 .menu__icon{
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 40px;
     height: 40px;
     border-radius: 50%;
     background: $color-button;
 }
-.menu__icon img{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
 
 .menu__text{
+    font-family: "TTLakes-Medium";
 	font-size: $text-size-m;
 	line-height: 40px;
 	letter-spacing: -0.2px;
@@ -62,10 +61,6 @@
 }
 
 @media (min-width: $window-width-m) {
-    .menu{
-        margin: 0 $margin-m;
-    }
-
     .menu__link--burger::after{
         content: "";
         display: block;

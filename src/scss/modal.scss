@@ -41,11 +41,12 @@
     z-index: -1;
     transition: 1s;
 }
-.modal__container .menu{
-    margin-top: $margin-m;
-}
 .modal--active .modal__container::before{
     opacity: 0.96;
+}
+
+.modal__wrapper{
+    margin: $margin-m $margin-s 0 $margin-s;
 }
 
 .modal__title{
@@ -61,16 +62,17 @@
 @media (min-width: $window-width-x) {
     .modal__container{
         width: 440px;
-        padding-top: $padding-x;
     }
-    .modal__container .menu{
+
+    .modal__wrapper{
+        margin: 0;
         position: absolute;
-        margin-top: 0;
         top: 32px;
-        right: 448px;
+        right: 472px;
     }
     
     .modal__title{
+        margin-top: $margin-x;
         padding-left: 28px;
     }
 }

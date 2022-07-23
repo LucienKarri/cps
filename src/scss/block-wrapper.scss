@@ -1,0 +1,12 @@
+.block-wrapper{
+    display: flex;
+    flex-direction: column;
+    margin: 0 $margin-s;
+    gap: 32px;
+}
+
+@media (min-width: $window-width-m) {
+    .block-wrapper{
+        margin: 0 $margin-m;
+    }
+}

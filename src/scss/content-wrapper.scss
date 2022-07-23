@@ -1,0 +1,16 @@
+.content-wrapper{
+    margin: 0 auto;
+    background-color: $color-body;
+}
+
+@media (min-width: $window-width-m) {
+    .content-wrapper{
+        width: $window-width-m;
+    }
+}
+
+@media (min-width: $window-width-x) {
+    .content-wrapper{
+        width: $window-width-x;
+    }
+}

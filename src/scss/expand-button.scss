@@ -11,8 +11,7 @@
     letter-spacing: -0.2px;
     padding-left: $padding-x;
     margin-top: $margin-s;
-    transform: scale(1);
-    transition: 0.15s;
+    cursor: pointer;
 }
 .expand-button::before{
     content: "";
@@ -24,7 +23,8 @@
     background-image: url("../img/expand.svg");
 }
 .expand-button:hover{
-    transform: scale(1.1);
+    transform: scale(1.05);
+    transition: 0.15s;
 }
 .expand-button--disabled{
     display:none;

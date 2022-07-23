@@ -8,8 +8,6 @@ html{
 }
 
 body{
-    margin: 0 auto;
-    background-color: $color-body;
     font-family: "TTLakes-Regular";
     color: $color-text;
     letter-spacing: -0.2px;
@@ -32,16 +30,8 @@ footer{
     border-top: 1px solid $color-border-divider;
 }
 
-@media (min-width: $window-width-m) {
-    body{
-        width: $window-width-m;
-    }
-}
 
 @media (min-width: $window-width-x) {
-    body{
-        width: $window-width-x;
-    }
     header{
         display: none;
     }
