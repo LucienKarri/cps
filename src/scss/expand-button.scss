@@ -12,6 +12,7 @@
     padding-left: $padding-x;
     margin-top: $margin-s;
     cursor: pointer;
+    transition: 0.3s;
 }
 .expand-button::before{
     content: "";
@@ -23,8 +24,7 @@
     background-image: url("../img/expand.svg");
 }
 .expand-button:hover{
-    transform: scale(1.05);
-    transition: 0.15s;
+    color: $color-button;
 }
 .expand-button--disabled{
     display:none;

@@ -22,11 +22,14 @@
 
 .menu__link{
     display: flex;
-    transform: scale(1);
-    transition: 0.15s;
+    color: $color-text;
+    transition: 0.3s;
 }
 .menu__link:hover{
-    transform: scale(1.1);
+    color: $color-button;
+}
+.menu__link:hover .menu__icon{
+    background: #ffc6d0;
 }
 .menu__link--disabled{
     display: none;
@@ -57,7 +60,7 @@
 	line-height: 40px;
 	letter-spacing: -0.2px;
 	font-weight: 500;
-	color: $color-text;
+	color: inherit;
 }
 
 @media (min-width: $window-width-m) {

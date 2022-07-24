@@ -64,7 +64,6 @@
     line-height: $line-height-button;
     letter-spacing: -0.15px;
     color: $color-button-text;
-    transform: scale(1);
     transition: 0.3s;
 }
 .price__button::after{
@@ -76,7 +75,7 @@
     background: url("../img/dropdown-white.svg") no-repeat 50% 50%;
 }
 .price__button:hover{
-    transform: scale(1.05);
+    background: #ffc6d0;
 }
 
 .price__comment{
@@ -96,11 +95,10 @@
     letter-spacing: -0.2px;
     color: $color-text;
     font-family: "TTLakes-Medium";
-    opacity: 1;
     transition: 0.15s;
 }
 .price__link:hover{
-    opacity: 0.8;
+    color: $color-button;
 }
 .price__link::after{
     content: "";
