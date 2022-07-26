@@ -3,17 +3,19 @@ import Swiper, { Navigation, Pagination } from '../../node_modules/swiper'
 const swiper = document.querySelectorAll('.swiper');
 const swiperWrapper = document.querySelectorAll('.swiper-wrapper');
 const button = document.querySelectorAll('.expand-button');
-const burger = document.querySelector('.menu__link--burger');
+const burger = document.querySelectorAll('#burger');
 const sideMenu = document.querySelector('.side-menu');
-const burgerExit = sideMenu.querySelector('.menu__link');
-const menuDisabled = document.querySelectorAll('.menu__link--disabled');
-const telButtons = document.querySelectorAll('.callback-btn');
+const sideMenuContainer = sideMenu.querySelector('.side-menu__container');
+const burgerExit = sideMenu.querySelector('#burger');
+const menuDisabled = document.querySelectorAll('.menu__item--disabled');
+const telButtons = document.querySelectorAll('#callback');
 const modal = document.querySelector('.modal');
+const modalContainer = document.querySelector('.modal__container');
 const modalForm = modal.querySelectorAll('.form__elem');
 const modalExit = modal.querySelector('.menu__link');
-const chatButtons = document.querySelectorAll('.feedback-btn');
+const chatButtons = document.querySelectorAll('#feedback');
 const text = document.querySelector('.about-company__text');
-let modalTitle = modal.querySelector('.modal__title');
+let modalTitle = modal.querySelector('.modal__text');
 let slidesList = [];
 let mySwiper = [];
 
@@ -29,9 +31,9 @@ function switchModal() {
         modalTitle.textContent = 'Заказать звонок';
     } else {
         modalForm.forEach(element => {
-            setTimeout(function() {element.style.display = 'inline-block';}, 500);
+            setTimeout(function() {element.style.display = 'inline-block';}, 100);
         });
-        setTimeout(function() {modalTitle.textContent = 'Обратная связь';}, 500);
+        setTimeout(function() {modalTitle.textContent = 'Обратная связь';}, 100);
     }
 }
 
@@ -66,8 +68,7 @@ function mobileSwiper(swiper, btn, swiperWrapper) {
             });
         }
         swiper.dataset.mobile = 'true';
-    }
-    if (window.innerWidth >= 768) {
+    } else {
         swiper.dataset.mobile = 'false';
         if (swiper.classList.contains('swiper-initialized')) {
             mySwiper[swiper.dataset.num].destroy();
@@ -119,14 +120,14 @@ function showText(btn) {
 function linkControl() {
     if (window.innerWidth >= 768 && window.innerWidth < 1440) {
         menuDisabled.forEach(element => {
-            if (element.classList.contains('menu__link--disabled')) {
-                element.classList.toggle('menu__link--disabled');
+            if (element.classList.contains('menu__item--disabled')) {
+                element.classList.toggle('menu__item--disabled');
             }
         });
     } else {
         menuDisabled.forEach(element => {
-            if (!element.classList.contains('menu__link--disabled')) {
-                element.classList.toggle('menu__link--disabled');
+            if (!element.classList.contains('menu__item--disabled')) {
+                element.classList.toggle('menu__item--disabled');
             }
         });
     }
@@ -163,20 +164,16 @@ function expandButtonListener() {
                 button[i].classList.toggle('expand-button--open');
                 if (i != 0) {
                     heightControl(swiperWrapper[j], button[i]);
-                    setTimeout(function() {swiperWrapper[j].style.transition = "none";}, 1000);
                 } else {
                     showText(button[i]);
-                    setTimeout(function() {text.style.transition = "none";}, 1000);
                 }
                 button[i].textContent = 'Скрыть';
             } else {
                 button[i].classList.toggle('expand-button--open');
                 if (i != 0) {
-                    swiperWrapper[j].style.transition = "max-height 1s";
                     heightControl(swiperWrapper[j], button[i]);
                     button[i].textContent = 'Показать все';
                 } else {
-                    text.style.transition = "max-height 1s";
                     showText(button[i]);
                     button[i].textContent = 'Читать далее';
                 }
@@ -194,45 +191,67 @@ function checkBurgerExit() {
     }
 }
 
-/*обработчик события для открытия бокового меню*/
-burger.addEventListener('click', function (e) {
-    e.preventDefault();
-    sideMenu.classList.toggle('side-menu--active');
-});
-
-/*обработчик события для закрытия бокового меню*/
-burgerExit.addEventListener('click', function (e) {
-    e.preventDefault();
-    sideMenu.classList.toggle('side-menu--active');
-});
-
-/*обработчик события для открытия окна обратной связи*/
-chatButtons.forEach(element => {
-    element.addEventListener('click', function (e) {
-        e.preventDefault();
-        modal.classList.toggle('modal--active');
-    })
-});
-
-/*обработчик события для открытия окна заказа звонка*/
-telButtons.forEach(element => {
-    element.addEventListener('click', function (e) {
-        e.preventDefault();
-        modal.classList.toggle('modal--active');
-        modal.classList.toggle('modal--callback');
-        switchModal();
-    })
-});
-
-/*обработчик события для закрытия окна заказа звонка или окна обратной связи*/
-modalExit.addEventListener('click', function (e) {
-    e.preventDefault();
-    if (modal.classList.contains('modal--callback')) {
-        modal.classList.toggle('modal--callback');
-        switchModal();
+function clickOutside(e) {
+    if (modal.classList.contains('modal--active') && e.clientX < window.innerWidth - getComputedStyle(modalContainer).width.substring(0, getComputedStyle(modalContainer).width.indexOf('px'))) {
+        modalExit.click();
+        document.removeEventListener('click', clickOutside);
+    } else if (sideMenu.classList.contains('side-menu--active') && e.clientX > getComputedStyle(sideMenuContainer).width.substring(0, getComputedStyle(sideMenuContainer).width.indexOf('px'))) {
+        burgerExit.click();
+        document.removeEventListener('click', clickOutside);
     }
-    modal.classList.toggle('modal--active');
+}
+
+function initClickOutside() {
+    document.addEventListener('click', clickOutside);
+}
+
+function buttonsControl(btn) {
+    return function (e) {
+        e.preventDefault();
+        if (btn.id === 'burger') {
+            sideMenu.classList.toggle('side-menu--active');
+        }
+        if (btn.id === 'callback') {
+            if (!modal.classList.contains('modal--active')) {
+                modal.classList.toggle('modal--active');
+            }
+            modal.classList.toggle('modal--callback');
+            switchModal();
+        }
+        if (btn.id === 'feedback') {
+            if (modal.classList.contains('modal--active')) {
+                modal.classList.toggle('modal--callback');
+                switchModal();
+            } else {
+                modal.classList.toggle('modal--active');
+            }
+        }
+        if (btn === modalExit) {
+            if (modal.classList.contains('modal--callback')) {
+                modal.classList.toggle('modal--callback');
+                switchModal();
+            }
+            modal.classList.toggle('modal--active');
+        }
+        if (sideMenu.classList.contains('side-menu--active') || modal.classList.contains('modal--active')) {
+            setTimeout(initClickOutside, 1000);
+        }
+    }
+}
+
+burger.forEach(element => {
+    element.addEventListener('click', buttonsControl(element));
 });
+
+chatButtons.forEach(element => {
+    element.addEventListener('click', buttonsControl(element));
+});
+
+telButtons.forEach(element => {
+    element.addEventListener('click', buttonsControl(element));
+});
+
+modalExit.addEventListener('click', buttonsControl(modalExit));
 
 /*обработчик события для закрытия окон через escape*/
 document.addEventListener('keydown', function (e) {
@@ -242,16 +261,6 @@ document.addEventListener('keydown', function (e) {
         } else if (sideMenu.classList.contains('side-menu--active')) {
             burgerExit.click();
         }
-    }
-});
-
-/*обработчик события для закрытия окон, при клике вне окна*/
-document.addEventListener('click', function (e) {
-    console.log(e.target);
-    if (e.target.classList.contains('modal__container') && modal.classList.contains('modal--active')) {
-        modalExit.click();
-    } else if (e.target.classList.contains('side-menu__container') && sideMenu.classList.contains('side-menu--active')) {
-        burgerExit.click();
     }
 });
 

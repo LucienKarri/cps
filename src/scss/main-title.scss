@@ -8,6 +8,7 @@
 .main-title__wrapper{
     border: 4px solid transparent;
     border-left: 4px solid $color-border-title;
+    padding-left: 12px;
 }
 
 .main-title__text{
@@ -16,11 +17,10 @@
     letter-spacing: -0.6px;
     line-height: $line-height-xl;
     margin: 0;
-    padding-left: 12px;
 }
 
 @media (min-width: $window-width-m) {
-    .main-title__text{
+    .main-title__wrapper{
         padding-left: 20px;
     }
 }
@@ -30,7 +30,7 @@
         margin-top: 24px;
     }
     
-    .main-title__text{
+    .main-title__wrapper{
         padding-left: 28px;
     }
 }

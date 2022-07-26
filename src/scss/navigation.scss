@@ -25,6 +25,7 @@
 .navigation__item{
     border: 2px solid transparent;
     border-radius: 6px;
+    padding: 8px $padding-s;
 }
 .navigation__item:hover{
     background-color: $color-background;
@@ -34,7 +35,6 @@
 .navigation__link{
     font-family: "TTLakes-Medium";
     display: block;
-    padding: 8px $padding-s;
     font-size: $text-size-m;
     line-height: $line-height-m;
     letter-spacing: -0.2px;

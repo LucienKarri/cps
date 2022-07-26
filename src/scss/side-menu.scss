@@ -16,8 +16,11 @@
 }
 
 .side-menu__container{
+    box-sizing: border-box;
+    padding: 18px 16px 32px 16px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     box-shadow: -2px 0px 4px rgba(69, 79, 126, 0.02), 16px 0px 52px rgba(14, 24, 80, 0.2);
     background: $color-background;
     width: 320px;
@@ -30,6 +33,8 @@
 .side-menu__container::before{
     content: '';
     position: absolute;
+    left: 0;
+    top: 0;
     display: block;
     width: 100%;
     height: 100%;
@@ -42,37 +47,43 @@
     opacity: 0.96;
 }
 
-.side-menu__navigation{
-    flex: 1 1 auto;
+.side-menu__top{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.side-menu__bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 }
 
 .side-menu__list{
-    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    margin: $margin-m 0 0 0;
-    padding: 0;
+    gap: 16px;
 }
-.side-menu__item{
-    padding-left: 20px;
+.side-menu__item::before{
+    content: "";
+    position: absolute;
+    left: 0;
+    height: 24px;
     border: 4px solid transparent;
 }
-.side-menu__item:hover{
-    color: $color-text-lighter;
+.side-menu__item:hover::before{
     border-left-color: $color-border-title;
-    transition: 0.6s;
+    transition: 0.3s;
 }
 .side-menu__link{
+    display: block;
     font-size: $text-size-m;
-    line-height: $line-height-m;
+    line-height: $line-height-x;
     color: inherit;
     letter-spacing: -0.2px;
-    text-decoration: none;
 }
 .side-menu__link:hover{
     color: $color-text-lighter;
-    transition: 0.6s;
+    transition: 0.3s;
 }
 .side-menu__link--tel{
     font-family: "TTLakes-Bold";
@@ -88,7 +99,6 @@
 }
 
 .side-menu__language{
-    margin: 0 0 $margin-m 0;
     font-size: $text-size-m;
     line-height: $text-size-m;
     letter-spacing: -0.2px;
@@ -110,6 +120,21 @@ input[type="radio"] {
 }
 input[type="radio"]:checked + label{
     color: $color-text-lighter;
+}
+
+@media (min-width: $window-width-m) {
+    .side-menu__container{
+        padding: 18px 24px 32px 24px;
+    }
+    .side-menu__top{
+        gap: 24px;
+    }
+    .side-menu__list{
+        gap: 24px;
+    }
+    .side-menu__bottom{
+        gap: 32px;
+    }
 }
 
 @media (min-width: $window-width-x) {

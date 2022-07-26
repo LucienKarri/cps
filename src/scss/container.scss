@@ -1,11 +1,14 @@
 .container{
-    position: relative;
     transition: 1s;
     display: flex;
     flex-direction: column;
     gap: 24px;
 }
-
+.container__sections{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
 .container__section{
     display: flex;
     flex-direction: column;
@@ -16,7 +19,9 @@
     .container{
         gap: 32px;
     }
-    
+    .container__sections{
+        gap: 32px;
+    }
     .container__section{
         gap: 24px;
     }
@@ -26,6 +31,9 @@
     .container{
         transform: translateX(320px);
         width: 1120px;
+        gap: 50px;
+    }
+    .container__sections{
         gap: 50px;
     }
 }

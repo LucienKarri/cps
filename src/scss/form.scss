@@ -1,17 +1,11 @@
 .form{
-    font-family: "TTLakes-Medium";
-    height: 100vh;
-}
-
-.form__container{
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin: 0 $margin-s;
+    font-family: "TTLakes-Medium";
 }
 
 .form__elem{
-    font-family: "TTLakes-Medium";
     padding: 12px $padding-s;
     background: $color-background;
     border: 1px solid $color-border;
@@ -62,10 +56,4 @@
     width: 24px;
     height: 24px;
     background: url("../img/dropdown-white.svg") no-repeat 50% 50%;
-}
-
-@media (min-width: $window-width-x) {
-    .form__container{
-        margin: 0 $margin-x;
-    }
 }
