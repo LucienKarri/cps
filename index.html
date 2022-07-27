@@ -93,14 +93,20 @@
                             <a href="#" class="side-menu__link">mail@cps.com</a>
                             <a href="#" class="side-menu__link side-menu__link--tel">8 800 890 8900</a>
                         </div>
-                        <div class="side-menu__language">
-                            <input type="radio" name="lang" value="ru" id="ru" checked="checked">
-                            <label for="ru" class="side-menu__label">ru</label>
-                            <input type="radio" name="lang" value="en" id="en">
-                            <label for="en" class="side-menu__label">en</label>
-                            <input type="radio" name="lang" value="ch" id="ch">
-                            <label for="ch" class="side-menu__label">ch</label>
-                        </div>
+                        <ul class="side-menu__language">
+                            <li>
+                                <input type="radio" name="lang" value="ru" id="ru" checked="checked">
+                                <label for="ru" class="side-menu__label">ru</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="lang" value="en" id="en">
+                                <label for="en" class="side-menu__label">en</label>
+                            </li>
+                            <li>
+                                <input type="radio" name="lang" value="ch" id="ch">
+                                <label for="ch" class="side-menu__label">ch</label>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </aside>
@@ -477,12 +483,10 @@
                     </section>
                 </section>
                 
-                <footer>
-                    <div class="footer">
-                        <span class="footer__text">@2019 CPS<br>Разработано командой Apesong</span>
-                        <a href="#" class="footer__text footer__link">Политика конфиденциальности</a>
-                        <span class="footer__text">Информация, размещенная на данной странице, не является публичной офертой</span>
-                    </div>
+                <footer class="footer">
+                    <span class="footer__text">@2019 CPS<br>Разработано командой Apesong</span>
+                    <a href="#" class="footer__text footer__link">Политика конфиденциальности</a>
+                    <span class="footer__text">Информация, размещенная на данной странице, не является публичной офертой</span>
                 </footer>
             </div>
             <div class="modal">
@@ -500,10 +504,10 @@
                         <h2 class="modal__text">Обратная связь</h2>
                     </div>
                     <form action="#" class="form">
-                        <input type="text" value="" placeholder="Имя" class="form__elem">
-                        <input type="tel" name="" id="" placeholder="Телефон" class="form__elem">
-                        <input type="email" name="" id="" placeholder="Электронная почта" class="form__elem">
-                        <textarea name="" id="" cols="" rows="4" placeholder="Сообщение" class="form__elem"></textarea>
+                        <input type="text" placeholder="Имя" class="form__elem">
+                        <input type="tel" placeholder="Телефон" class="form__elem">
+                        <input type="email" placeholder="Электронная почта" class="form__elem">
+                        <textarea rows="4" placeholder="Сообщение" class="form__elem"></textarea>
                         <p class="form__text">Нажимая “отправить”, вы даете согласие на <a href="#" class="form__link">обработку персональных данных</a> и соглашаетесь с нашей <a href="#" class="form__link">политикой конфиденциальности</a></p>
                         <button type="submit" class="form__button">отправить</button>
                     </form>
