@@ -6,7 +6,7 @@ const button = document.querySelectorAll('.expand-button');
 const burger = document.querySelectorAll('#burger');
 const sideMenu = document.querySelector('.side-menu');
 const sideMenuContainer = sideMenu.querySelector('.side-menu__container');
-const burgerExit = sideMenu.querySelector('#burger');
+const burgerExit = sideMenu.querySelector('.menu__item');
 const menuDisabled = document.querySelectorAll('.menu__item--disabled');
 const telButtons = document.querySelectorAll('#callback');
 const modal = document.querySelector('.modal');
@@ -185,25 +185,44 @@ function expandButtonListener() {
 /*В зависимости от разрешения, определяем отображать или скрыть кнопку закрытия бокового меню*/
 function checkBurgerExit() {
     if (window.innerWidth >= 1440) {
-        burgerExit.classList.add('menu__link--disabled')
+        burgerExit.classList.add('menu__item--disabled')
     } else {
-        burgerExit.classList.remove('menu__link--disabled')
+        burgerExit.classList.remove('menu__item--disabled')
     }
 }
 
-function clickOutside(e) {
+function clickOutsideMenu(e) {
+    if (sideMenu.classList.contains('side-menu--active') && e.clientX > getComputedStyle(sideMenuContainer).width.substring(0, getComputedStyle(sideMenuContainer).width.indexOf('px')) && !modal.classList.contains('modal--active')) {
+        burger[1].click();
+    }
+}
+function clickOutsideModal(e) {
     if (modal.classList.contains('modal--active') && e.clientX < window.innerWidth - getComputedStyle(modalContainer).width.substring(0, getComputedStyle(modalContainer).width.indexOf('px'))) {
         modalExit.click();
-        document.removeEventListener('click', clickOutside);
-    } else if (sideMenu.classList.contains('side-menu--active') && e.clientX > getComputedStyle(sideMenuContainer).width.substring(0, getComputedStyle(sideMenuContainer).width.indexOf('px'))) {
-        burgerExit.click();
-        document.removeEventListener('click', clickOutside);
     }
 }
 
-function initClickOutside() {
-    document.addEventListener('click', clickOutside);
+
+function keydownControl(e) {
+    if (e.code == 'Escape') {
+        if (modal.classList.contains('modal--active')) {
+            modalExit.click();
+        } else if (sideMenu.classList.contains('side-menu--active')) {
+            burger[1].click();
+        }
+    }
 }
+
+function initClickOutsideModal() {
+    document.addEventListener('click', clickOutsideModal);
+}
+
+function initClickOutsideMenu() {
+    document.addEventListener('click', clickOutsideMenu);
+}
+
+/*обработчик события для закрытия окон через escape*/
+document.addEventListener('keydown', keydownControl);
 
 function buttonsControl(btn) {
     return function (e) {
@@ -233,8 +252,17 @@ function buttonsControl(btn) {
             }
             modal.classList.toggle('modal--active');
         }
-        if (sideMenu.classList.contains('side-menu--active') || modal.classList.contains('modal--active')) {
-            setTimeout(initClickOutside, 1000);
+        if (sideMenu.classList.contains('side-menu--active')) {
+            setTimeout(initClickOutsideMenu, 500);
+        } 
+        if (!sideMenu.classList.contains('side-menu--active')) {
+            document.removeEventListener('click', clickOutsideMenu);
+        }
+        if (modal.classList.contains('modal--active')) {
+            setTimeout(initClickOutsideModal, 500);
+        }
+        if (!modal.classList.contains('modal--active')) {
+            document.removeEventListener('click', clickOutsideModal);
         }
     }
 }
@@ -253,16 +281,6 @@ telButtons.forEach(element => {
 
 modalExit.addEventListener('click', buttonsControl(modalExit));
 
-/*обработчик события для закрытия окон через escape*/
-document.addEventListener('keydown', function (e) {
-    if (e.code == 'Escape') {
-        if (modal.classList.contains('modal--active')) {
-            modalExit.click();
-        } else if (sideMenu.classList.contains('side-menu--active')) {
-            burgerExit.click();
-        }
-    }
-});
 
 /*первоначальный вызов функций*/
 swiperInit();

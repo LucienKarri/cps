@@ -30,6 +30,9 @@ footer{
     margin-top: auto;
     border-top: 1px solid $color-border-divider;
 }
+textarea{
+    resize: none;
+}
 
 
 @media (min-width: $window-width-x) {

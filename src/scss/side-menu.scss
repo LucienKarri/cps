@@ -99,15 +99,15 @@
 }
 
 .side-menu__language{
-    font-size: $text-size-m;
-    line-height: $text-size-m;
-    letter-spacing: -0.2px;
-    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 .side-menu__label{
-    display: inline-block;
-    width: 24px;
-    height: 24px;
+    text-transform: uppercase;
+    font-size: $text-size-m;
+    line-height: $line-height-m;
+    letter-spacing: -0.2px;
     cursor: pointer;
     transition: 0.3s;
 }
