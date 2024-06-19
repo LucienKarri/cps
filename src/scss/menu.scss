@@ -40,10 +40,49 @@
 }
 
 .menu__link{
-    display: flex;
-    color: $color-text;
-    transition: 0.3s;
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: $color-button;
+    background-repeat: no-repeat;
+    background-position: center;
 }
+
+.menu__link--burger {
+    background-image: url(../img/burger.svg);
+}
+.menu__link--group {
+    width: 96px;
+    height: 50px;
+    border-radius: 0;
+    background-color: #FFFFFF;
+    background-image: url(../img/group.svg);
+}
+.menu__link--call {
+    background-image: url(../img/call.svg);
+}
+.menu__link--chat {
+    background-image: url(../img/chat.svg);
+}
+.menu__link--profile{
+    background-image: url(../img/profile.svg);
+}
+.menu__link--repair {
+    background-image: url(../img/repair.svg);
+}
+.menu__link--check {
+    background-image: url(../img/check-status.svg);
+}
+
+.menu__link--burger-exit {
+    background-image: url(../img/burger-exit.svg);
+}
+
+.menu__link--search {
+    background-image: url(../img/search.svg);
+}
+
 .menu__link:hover{
     color: $color-button;
 }

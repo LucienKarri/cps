@@ -23,6 +23,12 @@
     color: $color-text;
 }
 
+.service-card--brand {
+    background-image: url(../img/lenovo.svg);
+    background-repeat: no-repeat;
+    background-position: 16px 50%;
+}
+
 .service-card__icon{
     display: flex;
     justify-content: center;
@@ -32,8 +38,11 @@
     border: 2px solid $color-button;
     border-radius: 50%;
     transition: 0.3s;
+    background-image: url(../img/dropdown.svg);
+    background-repeat: no-repeat;
+    background-position: center;
 }
+
 .service-card:hover .service-card__icon{
-    background: #ffc6d0;
     border-color: #ffc6d0;
 }
